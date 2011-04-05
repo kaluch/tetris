@@ -43,10 +43,14 @@
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="cb.bmp" />
+		<Unit filename="include\Liste_piece.h" />
+		<Unit filename="include\Piece.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src\Piece.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

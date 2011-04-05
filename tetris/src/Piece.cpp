@@ -1,13 +1,10 @@
-#include "Piece.h"
+#include "../include/Piece.h"
 
 using namespace std;
 
+/*
 Piece::Piece()
-{
-    //ctor
-}
-
-Piece::~Piece()
 {
     //dtor
 }
+*/
