@@ -3,10 +3,12 @@
 
 workspace::workspace()
 {
-    //ctor
+    Set_nb_col(10);
+    Set_nb_lignes(20);
+    Set_tableau();
 }
 
 workspace::~workspace()
 {
-    //dtor
+    free_tableau();
 }
