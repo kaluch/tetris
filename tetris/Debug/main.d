@@ -24,7 +24,8 @@ main.d main.o: ../main.cpp /nfs/home/eleves/rob/souchet/include/SDL/SDL.h \
  /nfs/home/eleves/rob/souchet/include/SDL/SDL_loadso.h \
  /nfs/home/eleves/rob/souchet/include/SDL/SDL_timer.h \
  /nfs/home/eleves/rob/souchet/include/SDL/SDL_version.h \
- ../include/Piece.h ../include/Liste_piece.h
+ ../include/Piece.h ../include/Liste_piece.h ../include/../globale.h \
+ ../globale.h
 
 /nfs/home/eleves/rob/souchet/include/SDL/SDL.h:
 
@@ -81,3 +82,7 @@ main.d main.o: ../main.cpp /nfs/home/eleves/rob/souchet/include/SDL/SDL.h \
 ../include/Piece.h:
 
 ../include/Liste_piece.h:
+
+../include/../globale.h:
+
+../globale.h:
