@@ -22,8 +22,8 @@ public:
 		_rColor = r;
 		_gColor=g;
 		_bColor=b;
-		_x = 0;
-		_y = 0;
+		_x = 100;
+		_y = 100;
 	}
 
 	Piece() {
@@ -42,6 +42,7 @@ public:
 	}
 
 	void afficher();
+	void afficherBlocs();
 	/*-------GETTERS-----------*/
 	int id_piece() {
 		return _id_piece;

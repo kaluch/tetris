@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1302254096 source:c:\users\seb\desktop\tetris\tetris\main.cpp
+1302257849 source:c:\users\seb\desktop\tetris\tetris\main.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
 	"include/Piece.h"
+	"globale.h"
 
 1255800450 c:\users\seb\sdl-1.2.14\include\sdl\sdl.h
 	"SDL_main.h"
@@ -387,10 +388,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1302254097 source:c:\users\seb\desktop\tetris\tetris\src\piece.cpp
+1302257847 source:c:\users\seb\desktop\tetris\tetris\src\piece.cpp
 	"../include/Piece.h"
+	<iostream>
+	"stdio.h"
 
-1302254096 c:\users\seb\desktop\tetris\tetris\include\piece.h
+1302257934 c:\users\seb\desktop\tetris\tetris\include\piece.h
 	"Liste_piece.h"
 	<iostream>
 	<time.h>
@@ -398,6 +401,30 @@
 	<stdlib.h>
 	<GL/gl.h>
 	<GL/glu.h>
+	"../globale.h"
 
 1302254096 c:\users\seb\desktop\tetris\tetris\include\liste_piece.h
+
+1302254829 c:\users\seb\desktop\tetris\tetris\globale.h
+
+1302254097 source:c:\users\seb\desktop\tetris\tetris\src\joueur.cpp
+	"../include/Joueur.h"
+
+1302254096 c:\users\seb\desktop\tetris\tetris\include\joueur.h
+	<iostream>
+	<string>
+
+1302254097 source:c:\users\seb\desktop\tetris\tetris\src\liste_piece.cpp
+
+1302254097 source:c:\users\seb\desktop\tetris\tetris\src\affichage.cpp
+	"affichage.h"
+
+1302254097 c:\users\seb\desktop\tetris\tetris\src\affichage.h
+
+1302254097 source:c:\users\seb\desktop\tetris\tetris\src\workspace.cpp
+	"../include/workspace.h"
+
+1302254096 c:\users\seb\desktop\tetris\tetris\include\workspace.h
+	<iostream>
+	<stdlib.h>
 

@@ -25,6 +25,22 @@ int main(int argc, char *argv[])
 
 /*OpenGL*/
 
+void dessinerRepere(unsigned int echelle = 1)
+{
+    glPushMatrix();
+    glScalef(echelle,echelle,echelle);
+    glBegin(GL_LINES);
+    glColor3ub(0,0,255);
+    glVertex2i(0,0);
+    glVertex2i(1,0);
+    glColor3ub(0,255,0);
+    glVertex2i(0,0);
+    glVertex2i(0,1);
+    glEnd();
+    glPopMatrix();
+}
+
+
 int main(int argc, char *argv[])
 {
 	SDL_Surface *screen;
@@ -40,6 +56,7 @@ int main(int argc, char *argv[])
     bool continuer = true;
     SDL_Event event;
     Piece p1(1,255,0,0);
+    //glTranslated(LARGEUR_ECRAN/2,HAUTEUR_ECRAN/2,0);
     while (continuer)
     {
         SDL_WaitEvent(&event);
@@ -51,9 +68,13 @@ int main(int argc, char *argv[])
 
         glClear(GL_COLOR_BUFFER_BIT);
 
+
         p1.afficher();
 
-        cout << p1.x() << p1.y() << endl;
+        dessinerRepere(10);
+
+
+        std::cout << p1.x() << p1.y() << std::endl;
         glFlush();
         SDL_GL_SwapBuffers();
     }

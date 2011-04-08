@@ -8,7 +8,7 @@
 #ifndef GLOBALE_H_
 #define GLOBALE_H_
 
-#define HAUTEUR_ECRAN 600
-#define LARGEUR_ECRAN 800
+#define HAUTEUR_ECRAN 480
+#define LARGEUR_ECRAN 640
 
 #endif /* GLOBALE_H_ */

@@ -43,18 +43,19 @@
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="cb.bmp" />
+		<Unit filename="globale.h" />
+		<Unit filename="include\Joueur.h" />
 		<Unit filename="include\Liste_piece.h" />
 		<Unit filename="include\Piece.h" />
+		<Unit filename="include\workspace.h" />
 		<Unit filename="main.cpp" />
-<<<<<<< HEAD
+		<Unit filename="src\Joueur.cpp" />
 		<Unit filename="src\Liste_piece.cpp" />
-=======
->>>>>>> 4f61993f306dd224da0a836552d36a46021d8f9b
 		<Unit filename="src\Piece.cpp" />
+		<Unit filename="src\workspace.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
-			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
