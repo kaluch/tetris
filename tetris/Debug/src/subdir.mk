@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Jeu.cpp \
 ../src/Joueur.cpp \
 ../src/Liste_piece.cpp \
 ../src/Piece.cpp \
@@ -11,6 +12,7 @@ CPP_SRCS += \
 ../src/workspace.cpp 
 
 OBJS += \
+./src/Jeu.o \
 ./src/Joueur.o \
 ./src/Liste_piece.o \
 ./src/Piece.o \
@@ -18,6 +20,7 @@ OBJS += \
 ./src/workspace.o 
 
 CPP_DEPS += \
+./src/Jeu.d \
 ./src/Joueur.d \
 ./src/Liste_piece.d \
 ./src/Piece.d \
