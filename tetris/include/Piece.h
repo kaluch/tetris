@@ -40,6 +40,15 @@ public:
 		if (_id_rot > NB_ROT)
 			_id_rot = 1;
 	}
+	void descendre(){
+		setY(y()-1);
+	}
+	void moveG(){
+		setX(x()-1);
+	}
+	void moveR(){
+		setX(x()+1);
+	}
 
 	void afficher();
 	/*-------GETTERS-----------*/
@@ -52,9 +61,13 @@ public:
 	int x() {
 		return _x;
 	}
+	void setX(int val){
+		_x=val;
+	}
 	int y() {
 		return _y;
 	}
+	void setY(int val){_y = val;}
 	int rColor() {
 			return _rColor;
 		}

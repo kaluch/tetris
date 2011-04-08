@@ -3,10 +3,12 @@
 
 #include <iostream>
 #include <stdlib.h>
-class workspace {
+
+#include "Piece.h"
+class Workspace {
 public:
-	workspace();
-	virtual ~workspace();
+	Workspace();
+	virtual ~Workspace();
 	int Get_nb_col() {
 		return _nb_col;
 	}
@@ -30,11 +32,14 @@ public:
 		free(_tableau);
 
 	}
+	void afficher(const int& x, const int& y);
+	void switch_piece(Piece next);
 protected:
 private:
 	int _nb_col;
 	int _nb_lignes;
 	int **_tableau;
+	Piece _piece_courante;
 };
 
 #endif // WORKSPACE_H
