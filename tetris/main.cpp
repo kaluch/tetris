@@ -3,11 +3,8 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-#define LARGEUR 800
-#define HAUTEUR 600
-
-
 #include "include/Piece.h"
+#include "globale.h"
 using namespace std;
 
 /*SDL
@@ -30,11 +27,15 @@ int main(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-
+	SDL_Surface *screen;
 	SDL_Init(SDL_INIT_VIDEO);
 
-	   SDL_SetVideoMode(640, 480, 32,SDL_OPENGL);//TODO afficher fenetre opengl
+	 screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32,SDL_OPENGL);
 	    SDL_WM_SetCaption("Ma super fenêtre OpenGL !", NULL);
+
+	glMatrixMode( GL_PROJECTION );
+	glLoadIdentity( );
+	gluOrtho2D(0,LARGEUR_ECRAN,0,HAUTEUR_ECRAN);
 
     bool continuer = true;
     SDL_Event event;
@@ -48,9 +49,11 @@ int main(int argc, char *argv[])
                 continuer = false;
         }
 
-         glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
 
         p1.afficher();
+
+        cout << p1.x() << p1.y() << endl;
         glFlush();
         SDL_GL_SwapBuffers();
     }

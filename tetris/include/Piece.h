@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include "../globale.h"
 
 #define LARGEUR 10
 #define HAUTEUR 10
@@ -21,6 +22,8 @@ public:
 		_rColor = r;
 		_gColor=g;
 		_bColor=b;
+		_x = 0;
+		_y = 0;
 	}
 
 	Piece() {
@@ -28,6 +31,8 @@ public:
 		int alea = (int) round((rand() * 6) + 1);
 		_id_piece = alea;
 		_id_rot = 1;
+		_x = 0;
+		_y = 0;
 	}
 
 	void tourner() {
