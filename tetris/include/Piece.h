@@ -9,6 +9,9 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "../globale.h"
+#include "Bloc.h"
+#include "stdio.h"
+#include "Piece.h"
 
 #define LARGEUR 10
 #define HAUTEUR 10
@@ -16,25 +19,50 @@
 class Piece {
 public:
 
-	Piece(const int& val, const int& r, const int& g, const int& b) {
+	Piece(int val, int r, int g,int b){
+	    _blocs = new Bloc[4];
 		_id_piece = val;
 		_id_rot = 1;
 		_rColor = r;
-		_gColor=g;
-		_bColor=b;
-		_x = 100;
-		_y = 100;
+		_gColor = g;
+		_bColor = b;
+		_x = 120;
+		_y = 420;
+		int k=0;
+		for(int i=0;i<4;i++){
+		    for(int j=0;j<4;j++){
+                if(LISTE_PIECES[val][1][i][j] == 1){
+
+                int x = (i-2)*LARGEUR_BLOC + _x;
+                int y = (j-2)*HAUTEUR_BLOC + _y;
+                _blocs[k].setBloc(x,y,rColor(),gColor(),bColor());
+                k++;
+                }
+		    }
+		}
 	}
 
 	Piece() {
 		srand(time(NULL));
+		_x = 120;
+		_y = 420;
 		int alea = (int) round((rand() * 6) + 1);
+		int k=0;
+		for(int i=0;i<4;i++){
+		    for(int j=0;j<4;j++){
+                if(LISTE_PIECES[alea][1][i][j] == 1){
+
+                int x = (i-2)*LARGEUR_BLOC + _x;
+                int y = (j-2)*HAUTEUR_BLOC + _y;
+                _blocs[k].setBloc(x,y,rColor(),gColor(),bColor());
+                k++;
+                }
+		    }
+		}
 		_id_piece = alea;
 		_id_rot = 1;
-		_x = 0;
-		_y = 0;
 	}
-
+    ~Piece(){}
 	void tourner() {
 		_id_rot++;
 		if (_id_rot > NB_ROT)
@@ -51,7 +79,6 @@ public:
 	}
 
 	void afficher();
-	void afficherBlocs();
 	/*-------GETTERS-----------*/
 	int id_piece() {
 		return _id_piece;
@@ -59,15 +86,9 @@ public:
 	int id_rot() {
 		return _id_rot;
 	}
-	int x() {
-		return _x;
-	}
-	void setX(int val){
-		_x=val;
-	}
-	int y() {
-		return _y;
-	}
+	int x() {return _x;}
+	void setX(int val){_x=val;}
+	int y() {return _y;}
 	void setY(int val){_y = val;}
 	int rColor() {
 			return _rColor;
@@ -87,6 +108,7 @@ protected:
 	int _rColor;
 	int _gColor;
 	int _bColor;
+	Bloc* _blocs;
 };
 
 #endif // PIECE_H

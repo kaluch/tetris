@@ -44,14 +44,20 @@
 		</Linker>
 		<Unit filename="cb.bmp" />
 		<Unit filename="globale.h" />
+		<Unit filename="include\Bloc.h" />
+		<Unit filename="include\Jeu.h" />
 		<Unit filename="include\Joueur.h" />
 		<Unit filename="include\Liste_piece.h" />
 		<Unit filename="include\Piece.h" />
 		<Unit filename="include\workspace.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src\Bloc.cpp" />
+		<Unit filename="src\Jeu.cpp" />
 		<Unit filename="src\Joueur.cpp" />
 		<Unit filename="src\Liste_piece.cpp" />
 		<Unit filename="src\Piece.cpp" />
+		<Unit filename="src\affichage.cpp" />
+		<Unit filename="src\affichage.h" />
 		<Unit filename="src\workspace.cpp" />
 		<Extensions>
 			<code_completion />

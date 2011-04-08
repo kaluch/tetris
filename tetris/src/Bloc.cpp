@@ -1,17 +1,23 @@
-/*
- * Bloc.cpp
- *
- *  Created on: 8 avr. 2011
- *      Author: souchet
- */
-
 #include "../include/Bloc.h"
 
-Bloc::Bloc() {
-	// TODO Auto-generated constructor stub
+using namespace std;
 
-}
+void Bloc::afficher()
+{
+    //glPushMatrix();
+    //glTranslated(x,y,0);
 
-Bloc::~Bloc() {
-	// TODO Auto-generated destructor stub
+    glBegin(GL_QUADS);
+
+    glColor3ub(rColor(),gColor(),bColor());
+
+    glVertex2d(x()-LARGEUR_BLOC/2,y()+HAUTEUR_BLOC/2);
+    printf("vertice 2 : %d %d ",x()-LARGEUR_BLOC/2,y()+HAUTEUR_BLOC/2);
+    glVertex2d(x()-(LARGEUR_BLOC/2),y()-HAUTEUR_BLOC/2);
+    printf("vertice 1 : %d %d ",x()-LARGEUR_BLOC/2,y()-HAUTEUR_BLOC/2);
+    glVertex2d(x()+LARGEUR_BLOC/2,y()-HAUTEUR_BLOC/2);
+    printf("vertice 3 : %d %d ",x()+LARGEUR_BLOC/2,y()-HAUTEUR_BLOC/2);
+    glVertex2d(x()+LARGEUR_BLOC/2,y()+HAUTEUR_BLOC/2);
+    printf("vertice 4 : %d %d\n",x()+LARGEUR_BLOC/2,y()+HAUTEUR_BLOC/2);/**/
+    glEnd();
 }

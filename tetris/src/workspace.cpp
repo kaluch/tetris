@@ -4,21 +4,21 @@
 #include "../globale.h"
 
 
-Workspace::Workspace()
-{
-    Set_nb_col(10);
-    Set_nb_lignes(20);
-    Set_tableau();
-}
-
-Workspace::~Workspace()
-{
-    free_tableau();
-}
-
-void Workspace::afficher(const int& x, const int& y)
+void Workspace::afficher(int x,int y)
 {
 	std::cerr << "affichage workspace joueur" << std::endl;
+
+	glBegin(GL_LINE_LOOP);
+    glColor3ub(255,255,255);
+    glVertex2d(x,y);
+    printf("vertice 2 : %d %d ",x,y);
+    glVertex2d(x,y+HAUTEUR_WS);
+    printf("vertice 1 : %d %d ",x,y+HAUTEUR_WS);
+    glVertex2d(x+LARGEUR_WS,y+HAUTEUR_WS);
+    printf("vertice 3 : %d %d ",x+LARGEUR_WS,y+HAUTEUR_WS);
+    glVertex2d(x+LARGEUR_WS,y);
+    printf("vertice 4 : %d %d\n",x+LARGEUR_WS,y);
+    glEnd();
 }
 /*
 void Workspace::switch_piece(Piece next, Piece courante){

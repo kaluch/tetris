@@ -2,9 +2,10 @@
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-
+#include "include/jeu.h"
 #include "include/Piece.h"
 #include "globale.h"
+#include "include/workspace.h"
 using namespace std;
 
 /*SDL
@@ -55,7 +56,18 @@ int main(int argc, char *argv[])
 
     bool continuer = true;
     SDL_Event event;
+//Jeu jeu(1);
+    Joueur j1("j1");
+    Joueur j2("j2");
+    //Workspace ws;
+    /*Piece p0(0,255,0,0);
     Piece p1(1,255,0,0);
+    Piece p2(2,255,0,0);
+    Piece p3(3,255,0,0);
+    Piece p4(4,255,0,0);
+    Piece p5(5,255,0,0);*/
+    //Piece p6(6,255,0,0);
+
     //glTranslated(LARGEUR_ECRAN/2,HAUTEUR_ECRAN/2,0);
     while (continuer)
     {
@@ -67,14 +79,19 @@ int main(int argc, char *argv[])
         }
 
         glClear(GL_COLOR_BUFFER_BIT);
-
-
+        j1.afficher(0);
+        j2.afficher(1);
+        //ws.afficher(20,20);
+        /*p0.afficher();
         p1.afficher();
+        p2.afficher();
+        p3.afficher();
+        p4.afficher();
+        p5.afficher();*/
+        //p6.afficher();
+        //dessinerRepere(10);
+        //std::cout << p6.x() << p6.y() << std::endl;
 
-        dessinerRepere(10);
-
-
-        std::cout << p1.x() << p1.y() << std::endl;
         glFlush();
         SDL_GL_SwapBuffers();
     }

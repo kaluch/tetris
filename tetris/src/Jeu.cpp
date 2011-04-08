@@ -7,29 +7,18 @@
 
 #include "../include/Jeu.h"
 
-Jeu::Jeu(int nb_joueurs) {
-	_joueurs = std::vector<Joueur>();
-	for (int i = 0; i < nb_joueurs; i++)
-		_joueurs.push_back(Joueur("j" + i));
-	init_SDL(_screen);
-	afficher();
-	lancer_jeu();
-
-}
-
-Jeu::~Jeu() {
-	// TODO Auto-generated destructor stub
-}
-
 void Jeu::init_SDL(SDL_Surface *screen) {
 	SDL_Init(SDL_INIT_VIDEO);
 	screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL);
 	SDL_WM_SetCaption("TETRIS SOUCHET DIGNOIRE 2011", NULL);
+	glMatrixMode( GL_PROJECTION );
+	glLoadIdentity( );
+	gluOrtho2D(0,LARGEUR_ECRAN,0,HAUTEUR_ECRAN);
 }
 
 void Jeu::afficher() {
 	for (unsigned int i = 0; i < _joueurs.size(); i++)
-		;//_joueurs[i].afficher();
+		_joueurs[i].afficher(i);
 }
 
 void Jeu::lancer_jeu(){
@@ -37,11 +26,11 @@ void Jeu::lancer_jeu(){
 	int tmp;
 	while(continuer)
 	{
-		/*switch(tmp = gestion_event(_event)){
+		switch(tmp = gestion_event(_event)){
 		case 0:
 			continuer = false;
 			break;
-		case 1:
+		/*case 1:
 			piece_courante().tourner();
 			break;
 		case 2:
@@ -52,12 +41,17 @@ void Jeu::lancer_jeu(){
 			break;
 		case 4:
 			piece_courante().moveR();
-			break;
-		}*/
-		continuer = true;
+		break;*/
+		default:
+            break;
+		}
+		afficher();
+		        glFlush();
+        SDL_GL_SwapBuffers();
+
 	}
 }
-/*
+
 int Jeu::gestion_event(SDL_Event event) {
 	SDL_WaitEvent(&event);
 	switch (event.type) {
@@ -75,4 +69,4 @@ int Jeu::gestion_event(SDL_Event event) {
 			return 4;
 		}
 	}
-}*/
+}

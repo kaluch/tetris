@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1302257849 source:c:\users\seb\desktop\tetris\tetris\main.cpp
+1302278030 source:c:\users\seb\desktop\tetris\tetris\main.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
+	"include/jeu.h"
 	"include/Piece.h"
 	"globale.h"
+	"include/workspace.h"
 
 1255800450 c:\users\seb\sdl-1.2.14\include\sdl\sdl.h
 	"SDL_main.h"
@@ -388,12 +390,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1302257847 source:c:\users\seb\desktop\tetris\tetris\src\piece.cpp
+1302269137 source:c:\users\seb\desktop\tetris\tetris\src\piece.cpp
 	"../include/Piece.h"
-	<iostream>
-	"stdio.h"
 
-1302257934 c:\users\seb\desktop\tetris\tetris\include\piece.h
+1302278354 c:\users\seb\desktop\tetris\tetris\include\piece.h
 	"Liste_piece.h"
 	<iostream>
 	<time.h>
@@ -402,17 +402,24 @@
 	<GL/gl.h>
 	<GL/glu.h>
 	"../globale.h"
+	"Bloc.h"
+	"stdio.h"
+	"Piece.h"
 
 1302254096 c:\users\seb\desktop\tetris\tetris\include\liste_piece.h
 
-1302254829 c:\users\seb\desktop\tetris\tetris\globale.h
+1302277199 c:\users\seb\desktop\tetris\tetris\globale.h
 
-1302254097 source:c:\users\seb\desktop\tetris\tetris\src\joueur.cpp
+1302278415 source:c:\users\seb\desktop\tetris\tetris\src\joueur.cpp
 	"../include/Joueur.h"
 
-1302254096 c:\users\seb\desktop\tetris\tetris\include\joueur.h
+1302274767 c:\users\seb\desktop\tetris\tetris\include\joueur.h
 	<iostream>
 	<string>
+	<GL/gl.h>
+	<GL/glu.h>
+	"Piece.h"
+	"workspace.h"
 
 1302254097 source:c:\users\seb\desktop\tetris\tetris\src\liste_piece.cpp
 
@@ -421,10 +428,33 @@
 
 1302254097 c:\users\seb\desktop\tetris\tetris\src\affichage.h
 
-1302254097 source:c:\users\seb\desktop\tetris\tetris\src\workspace.cpp
+1302277049 source:c:\users\seb\desktop\tetris\tetris\src\workspace.cpp
+	<iostream>
 	"../include/workspace.h"
+	"../globale.h"
 
-1302254096 c:\users\seb\desktop\tetris\tetris\include\workspace.h
+1302275320 c:\users\seb\desktop\tetris\tetris\include\workspace.h
 	<iostream>
 	<stdlib.h>
+	"Piece.h"
+
+1302269124 source:c:\users\seb\desktop\tetris\tetris\src\bloc.cpp
+	"../include/Bloc.h"
+
+1302270202 c:\users\seb\desktop\tetris\tetris\include\bloc.h
+	<iostream>
+	"stdio.h"
+	<GL/gl.h>
+	<GL/glu.h>
+	"../globale.h"
+
+1302276011 source:c:\users\seb\desktop\tetris\tetris\src\jeu.cpp
+	"../include/Jeu.h"
+
+1302278159 c:\users\seb\desktop\tetris\tetris\include\jeu.h
+	<iostream>
+	<vector>
+	<SDL/SDL.h>
+	"Joueur.h"
+	"../globale.h"
 

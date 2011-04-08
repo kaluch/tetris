@@ -8,16 +8,44 @@
 #ifndef BLOC_H_
 #define BLOC_H_
 
+#include <iostream>
+#include "stdio.h"
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include "../globale.h"
+
 class Bloc {
 public:
-	Bloc();
-	virtual ~Bloc();
-};
+    Bloc(){}
+	Bloc(int x,int y,int r,int g,int b){
+        _x = x;
+        _y = y;
+        _rColor = r;
+        _gColor = g;
+        _bColor = b;
+	}
+	~Bloc();
+
+	void afficher();
+    int x() {return _x;}
+	void setX(int val){_x=val;}
+	int y() {return _y;}
+	void setY(int val){_y = val;}
+	int rColor() {return _rColor;}
+	int gColor() {return _gColor;}
+	int bColor() {return _bColor;}
+	void setBloc(int x,int y,int r,int g,int b){
+	    _x = x;
+        _y = y;
+        _rColor = r;
+        _gColor = g;
+        _bColor = b;
+	}
 protected:
 	int _x;
 	int _y;
-	int _r;
-	int _g;
-	int _b;
-
+	int _rColor;
+	int _gColor;
+	int _bColor;
+};
 #endif /* BLOC_H_ */
