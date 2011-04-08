@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1301997253 source:c:\users\seb\desktop\tetris\tetris\main.cpp
+1302254096 source:c:\users\seb\desktop\tetris\tetris\main.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
+	"include/Piece.h"
 
 1255800450 c:\users\seb\sdl-1.2.14\include\sdl\sdl.h
 	"SDL_main.h"
@@ -385,4 +386,18 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1302254097 source:c:\users\seb\desktop\tetris\tetris\src\piece.cpp
+	"../include/Piece.h"
+
+1302254096 c:\users\seb\desktop\tetris\tetris\include\piece.h
+	"Liste_piece.h"
+	<iostream>
+	<time.h>
+	<math.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1302254096 c:\users\seb\desktop\tetris\tetris\include\liste_piece.h
 
