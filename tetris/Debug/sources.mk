@@ -12,8 +12,8 @@ ASM_SRCS :=
 CXX_SRCS := 
 C++_SRCS := 
 CC_SRCS := 
-OBJS := 
 C++_DEPS := 
+OBJS := 
 C_DEPS := 
 CC_DEPS := 
 CPP_DEPS := 
@@ -24,7 +24,4 @@ C_UPPER_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 src \
-obj/Debug/src \
-obj/Debug \
-. \
 

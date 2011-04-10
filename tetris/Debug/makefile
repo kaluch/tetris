@@ -10,8 +10,6 @@ RM := rm -rf
 -include sources.mk
 -include subdir.mk
 -include src/subdir.mk
--include obj/Debug/src/subdir.mk
--include obj/Debug/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -40,19 +38,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: tetris
+all: tetris.exe
 
 # Tool invocations
-tetris: $(OBJS) $(USER_OBJS)
+tetris.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: GCC C++ Linker'
-	g++ -L/nfs/home/eleves/rob/souchet/lib -o"tetris" $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Invoking: Cygwin C++ Linker'
+	g++ -L"C:\Program Files\CodeBlocks\SDL-1.2.14\lib" -o"tetris.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) tetris
+	-$(RM) $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) tetris.exe
 	-@echo ' '
 
 .PHONY: all clean dependents
