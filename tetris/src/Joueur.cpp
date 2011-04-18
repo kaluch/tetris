@@ -1,4 +1,3 @@
-
 #include "../include/Joueur.h"
 
 void Joueur::init_next_piece(){

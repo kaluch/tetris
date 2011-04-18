@@ -13,6 +13,11 @@ void Workspace::afficher(int x,int y)
     glVertex2d(x+LARGEUR_WS,y+nb_lignes()*HAUTEUR_BLOC);
     glVertex2d(x+nb_col()*LARGEUR_BLOC,y);
     glEnd();
+
+    //glTranslated(x,y,0);
+    /*glMatrixMode( GL_PROJECTION );
+	glLoadIdentity( );
+	gluOrtho2D(x,LARGEUR_WS,y,HAUTEUR_WS);*/
 }
 
 void Workspace::switch_piece(Piece *next){

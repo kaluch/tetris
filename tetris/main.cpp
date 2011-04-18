@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
 	/*SDL_Surface *screen;
 	SDL_Init(SDL_INIT_VIDEO);
 
+
 	screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL);
 	SDL_WM_SetCaption("Ma super fenêtre OpenGL !", NULL);
 
