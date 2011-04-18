@@ -4,6 +4,8 @@
  *  Created on: 8 avr. 2011
  *      Author: souchet
  */
+#ifndef JEU_H_
+#define JEU_H_
 
 #include <iostream>
 #include <sstream>
@@ -11,8 +13,7 @@
 #include <SDL/SDL.h>
 #include "Joueur.h"
 #include "../globale.h"
-#ifndef JEU_H_
-#define JEU_H_
+
 
 #include <SDL/SDL.h>
 #include <GL/gl.h>

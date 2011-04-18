@@ -1,4 +1,4 @@
-/*algo de fonctionnement
+algo de fonctionnement
 
 Lancement du prog
 
@@ -35,6 +35,5 @@ lancer la simu
 					si le nb blocs= nb col : detruire la ligne et marquer des points
 				si la case centrale en haut est pleine, alors fin de partie
 		faire descendre la piece_courante
-		
-			
-		
+
+

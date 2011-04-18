@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="..\new_tetris\algo" open="0" top="0" tabpos="6">
+		<Cursor position="1046" topLine="0" />
+	</File>
+	<File name="globale.h" open="1" top="0" tabpos="12">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="include\Bloc.h" open="1" top="0" tabpos="8">
+		<Cursor position="557" topLine="17" />
+	</File>
+	<File name="include\Jeu.h" open="1" top="0" tabpos="3">
+		<Cursor position="664" topLine="13" />
+	</File>
+	<File name="include\Joueur.h" open="1" top="0" tabpos="5">
+		<Cursor position="316" topLine="6" />
+	</File>
+	<File name="include\Piece.h" open="1" top="0" tabpos="11">
+		<Cursor position="2174" topLine="61" />
+	</File>
+	<File name="include\workspace.h" open="1" top="0" tabpos="10">
+		<Cursor position="1053" topLine="2" />
+	</File>
+	<File name="src\Bloc.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="825" topLine="0" />
+	</File>
+	<File name="src\Jeu.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1209" topLine="0" />
+	</File>
+	<File name="src\Joueur.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="977" topLine="0" />
+	</File>
+	<File name="src\Piece.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="471" topLine="0" />
+	</File>
+	<File name="src\tetris.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1005" topLine="17" />
+	</File>
+	<File name="src\workspace.cpp" open="1" top="1" tabpos="9">
+		<Cursor position="207" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

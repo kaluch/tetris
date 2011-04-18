@@ -10,19 +10,22 @@
 
 class Joueur
 {
+    protected:
+    std::string _nom;
+    int _id_joueur;
+    int _score;
+    Workspace _workspace;
+    int _nb_next;
+    std::vector<Piece> _next_piece;
+    Piece _piece_courante;
 public:
-    Joueur(std::string name,int id)
+    Joueur(std::string name,int id) :_nom(name), _id_joueur(id),_score(0)
+    ,_workspace(),_nb_next(1),_next_piece(_nb_next),_piece_courante()
     {
         std::cerr<<"creation joueur "<<name<<std::endl;
-        _id_joueur = id;
-        _nom=name;
-        _score = 0;
-        _workspace = Workspace();
-        _nb_next = 1;
         std::cerr<<"init next"<<std::endl;
         init_next_piece();
         std::cerr<<"fin init next"<<std::endl;
-        _piece_courante = Piece();
         std::cerr<<"fin creation "<< std::endl;
         //_workspace.s
 
@@ -48,15 +51,7 @@ public:
     int id_joueur(){return _id_joueur;}
     int nb_next(){return _nb_next;}
     std::vector<Piece> next_piece(){return _next_piece;}
-protected:
-    std::string _nom;
-    int _id_joueur;
-    int _score;
-    Workspace _workspace;
-    std::vector<Piece> _next_piece;
-    int _nb_next;
-    Piece _piece_courante;
-private:
+
 };
 
 #endif // JOUEUR_H

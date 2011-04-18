@@ -21,7 +21,7 @@ void Jeu::init_SDL(SDL_Surface *screen) {
 
 void Jeu::afficher() {
 	for (unsigned int i = 0; i < _joueurs.size(); i++)
-		_joueurs[i].afficher();
+		joueurs()[i].afficher();
 }
 
 void Jeu::lancer_jeu(){

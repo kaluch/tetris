@@ -27,45 +27,45 @@ using namespace std;
 
  */
 int main(int argc, char *argv[]) {
-    std::cout<<"Lancement"<<std::endl;
-	SDL_Surface *screen;
-	SDL_Init(SDL_INIT_VIDEO);
-    //TTF_Init();
-    //	police = TTF_OpenFont("varsity_regular.ttf",30);
-    //  SDL_Color Noire =  {0,0,0};
-    //texte = TTF_RenderText_Solid(police,"Lucas",Noire);
-
-	screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL);
-	SDL_WM_SetCaption("Ma super fenÃªtre OpenGL !", NULL);
-   // TTF_Font *police = NULL;
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluOrtho2D(0, LARGEUR_ECRAN, 0, HAUTEUR_ECRAN);
-
-	bool continuer = true;
-	SDL_Event event;
-	std::cerr<< "creation Jeu"<<std::endl;
-	//Jeu jeu(1);
-    Joueur joueur("lucas",1);
-	//Workspace work;
-	std::cerr<<"création JEU OK"<<std::endl;
-
-	//glTranslated(LARGEUR_ECRAN/2,HAUTEUR_ECRAN/2,0);
-
-	while (continuer) {
-		SDL_WaitEvent(&event);
-		switch (event.type) {
-		case SDL_QUIT:
-			continuer = false;
-		}
-		glClear(GL_COLOR_BUFFER_BIT);
-        joueur.workspace().afficher(30,0);
-        //work.afficher(10,0);
-		glFlush();
-		SDL_GL_SwapBuffers();
-	}
-   // TTF_CloseFont(police);
-	//TTF_Quit();
+//    std::cout<<"Lancement"<<std::endl;
+//	SDL_Surface *screen;
+//	SDL_Init(SDL_INIT_VIDEO);
+//    //TTF_Init();
+//    //	police = TTF_OpenFont("varsity_regular.ttf",30);
+//    //  SDL_Color Noire =  {0,0,0};
+//    //texte = TTF_RenderText_Solid(police,"Lucas",Noire);
+//
+//	screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL);
+//	SDL_WM_SetCaption("Ma super fenÃªtre OpenGL !", NULL);
+//   // TTF_Font *police = NULL;
+//	glMatrixMode(GL_PROJECTION);
+//	glLoadIdentity();
+//	gluOrtho2D(0, LARGEUR_ECRAN, 0, HAUTEUR_ECRAN);
+//
+//	bool continuer = true;
+//	SDL_Event event;
+//	std::cerr<< "creation Jeu"<<std::endl;
+	Jeu jeu(1);
+//    Joueur joueur("lucas",1);
+//	//Workspace work;
+//	std::cerr<<"création JEU OK"<<std::endl;
+//
+//	//glTranslated(LARGEUR_ECRAN/2,HAUTEUR_ECRAN/2,0);
+//
+//	while (continuer) {
+//		SDL_WaitEvent(&event);
+//		switch (event.type) {
+//		case SDL_QUIT:
+//			continuer = false;
+//		}
+//		glClear(GL_COLOR_BUFFER_BIT);
+//        joueur.afficher();
+//        //work.afficher(10,0);
+//		glFlush();
+//		SDL_GL_SwapBuffers();
+//	}
+//   // TTF_CloseFont(police);
+//	//TTF_Quit();
 	SDL_Quit();
 	return 0;
 }

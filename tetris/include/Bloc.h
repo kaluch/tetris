@@ -52,7 +52,7 @@ public:
         _gColor = g;
         _bColor = b;
 	}
-	bool vide(){return _vide;}
+	bool vide()const{return _vide;}
 protected:
 	int _x;
 	int _y;
