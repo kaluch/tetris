@@ -2,11 +2,12 @@
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <SDL/SDL_ttf.h>
 
-#include "include/Jeu.h"
-#include "include/Piece.h"
-#include "globale.h"
-#include "include/workspace.h"
+#include "../include/Jeu.h"
+#include "../include/Piece.h"
+#include "../globale.h"
+#include "../include/workspace.h"
 using namespace std;
 
 /*void dessinerRepere(unsigned int echelle = 1)
@@ -27,61 +28,44 @@ using namespace std;
  */
 int main(int argc, char *argv[]) {
     std::cout<<"Lancement"<<std::endl;
-	/*SDL_Surface *screen;
+	SDL_Surface *screen;
 	SDL_Init(SDL_INIT_VIDEO);
-
+    //TTF_Init();
+    //	police = TTF_OpenFont("varsity_regular.ttf",30);
+    //  SDL_Color Noire =  {0,0,0};
+    //texte = TTF_RenderText_Solid(police,"Lucas",Noire);
 
 	screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL);
 	SDL_WM_SetCaption("Ma super fenÃªtre OpenGL !", NULL);
-
+   // TTF_Font *police = NULL;
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(0, LARGEUR_ECRAN, 0, HAUTEUR_ECRAN);
 
 	bool continuer = true;
-	SDL_Event event;*/
+	SDL_Event event;
 	std::cerr<< "creation Jeu"<<std::endl;
-	Jeu jeu(1);
+	//Jeu jeu(1);
+    Joueur joueur("lucas",1);
+	//Workspace work;
 	std::cerr<<"création JEU OK"<<std::endl;
-	//Joueur j1("j1");
-	//Joueur j2("j2");
-	//Workspace ws;
-
-	// Piece p0(0,255,0,0);
-	// Piece p1(1,255,0,0);
-	// Piece p2(2,255,0,0);
-	// Piece p3(3,255,0,0);
-	// Piece p4(4,255,0,0);
-	// Piece p5(5,255,0,0);
-	// Piece p6(6,255,0,0);
 
 	//glTranslated(LARGEUR_ECRAN/2,HAUTEUR_ECRAN/2,0);
 
-//	while (continuer) {
-//		SDL_WaitEvent(&event);
-//		switch (event.type) {
-//		case SDL_QUIT:
-//			continuer = false;
-//		}
-//
-//		glClear(GL_COLOR_BUFFER_BIT);
-//		j1.afficher(0);
-//		j2.afficher(1);
-		//ws.afficher(20,20);
-		// p0.afficher();
-		// p1.afficher();
-		// p2.afficher();
-		// p3.afficher();
-		// p4.afficher();
-		// p5.afficher();
-		//p6.afficher();
-		//dessinerRepere(10);
-		//std::cout << p6.x() << p6.y() << std::endl;
-
-//		glFlush();
-//		SDL_GL_SwapBuffers();
-	//}
-
+	while (continuer) {
+		SDL_WaitEvent(&event);
+		switch (event.type) {
+		case SDL_QUIT:
+			continuer = false;
+		}
+		glClear(GL_COLOR_BUFFER_BIT);
+        joueur.workspace().afficher(30,0);
+        //work.afficher(10,0);
+		glFlush();
+		SDL_GL_SwapBuffers();
+	}
+   // TTF_CloseFont(police);
+	//TTF_Quit();
 	SDL_Quit();
 	return 0;
 }

@@ -11,26 +11,49 @@
 class Joueur
 {
 public:
-    Joueur(std::string name)
+    Joueur(std::string name,int id)
     {
-        _nom = name;
+        std::cerr<<"creation joueur "<<name<<std::endl;
+        _id_joueur = id;
+        _nom=name;
         _score = 0;
         _workspace = Workspace();
         _nb_next = 1;
+        std::cerr<<"init next"<<std::endl;
         init_next_piece();
+        std::cerr<<"fin init next"<<std::endl;
         _piece_courante = Piece();
+        std::cerr<<"fin creation "<< std::endl;
         //_workspace.s
 
     }
-    ~Joueur() {}
     void init_next_piece();
     void changer_pieces();
-    void afficher(int i);
+    void afficher();
+    std::string nom() const {return _nom;}
+    Piece piece_courante(){
+        return _piece_courante;
+    }
+    Piece *next_p(){
+        return &_next_piece[0];
+    }
+    Workspace workspace(){return _workspace;}
+    void gestion_piece_courante();
+    void poser_piece();
+    void move();
+    void traitement_workspace();
+    int score(){return _score;}
+    void setScore(int val){_score = val;}
+
+    int id_joueur(){return _id_joueur;}
+    int nb_next(){return _nb_next;}
+    std::vector<Piece> next_piece(){return _next_piece;}
 protected:
     std::string _nom;
+    int _id_joueur;
     int _score;
     Workspace _workspace;
-    Piece *_next_piece;
+    std::vector<Piece> _next_piece;
     int _nb_next;
     Piece _piece_courante;
 private:
