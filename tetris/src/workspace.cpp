@@ -19,6 +19,11 @@ void Workspace::afficher(int x,int y)
     glVertex2d(x+LARGEUR_WS,y);
     printf("vertice 4 : %d %d\n",x+LARGEUR_WS,y);
     glEnd();
+
+    //glTranslated(x,y,0);
+    /*glMatrixMode( GL_PROJECTION );
+	glLoadIdentity( );
+	gluOrtho2D(x,LARGEUR_WS,y,HAUTEUR_WS);*/
 }
 /*
 void Workspace::switch_piece(Piece next, Piece courante){
