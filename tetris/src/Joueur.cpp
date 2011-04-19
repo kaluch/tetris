@@ -20,9 +20,10 @@ void Joueur::afficher(){
 }
 
 void Joueur::gestion_piece_courante(){
-    int xMin = piece_courante().downest().x();
-    int yMin = piece_courante().downest().y();
-    if(!workspace().tableau()[yMin - 1][xMin].vide())
+    int xMin = piece_courante().downest().x() + piece_courante().x();
+    int yMin = piece_courante().downest().y()+ piece_courante().y();
+    std::cerr<<"xmin "<<xMin<<" yMin "<<yMin<<std::endl;
+    if(yMin<=NB_LIGNES && !workspace().tableau()[yMin - 1][xMin].vide())
             poser_piece();
     }
 
@@ -43,7 +44,7 @@ void Joueur::move(){
 void Joueur::traitement_workspace(){
     int i=0;
     do{
-        if(workspace().compte_ligne(i) == workspace().nb_col()){
+        if(workspace().compte_ligne(i) == NB_COL){//TODO Check compte ligne
               workspace().detruire_ligne(i);
               setScore(score() +1);
         }

@@ -9,9 +9,9 @@ void Workspace::afficher(int x,int y)
 	glBegin(GL_LINE_LOOP);
     glColor3ub(0,255,255);
     glVertex2d(x,y);
-    glVertex2d(x,y+nb_lignes()*HAUTEUR_BLOC);
-    glVertex2d(x+LARGEUR_WS,y+nb_lignes()*HAUTEUR_BLOC);
-    glVertex2d(x+nb_col()*LARGEUR_BLOC,y);
+    glVertex2d(x,y+NB_LIGNES*HAUTEUR_BLOC);
+    glVertex2d(x+NB_COL*LARGEUR_BLOC,y+NB_LIGNES*HAUTEUR_BLOC);
+    glVertex2d(x+NB_COL*LARGEUR_BLOC,y);
     glEnd();
 
     //glTranslated(x,y,0);
@@ -21,14 +21,14 @@ void Workspace::afficher(int x,int y)
 }
 
 void Workspace::switch_piece(Piece *next){
-	next->setX(nb_col()/2);
-	next->setY(nb_lignes()+1);
+	next->setX(NB_COL/2);
+	next->setY(NB_LIGNES+1);
 }
 
 
 int Workspace::compte_ligne(int ligne){
     int cpt = 0;
-    for(int i=0;i<nb_col();i++){
+    for(int i=0;i<NB_COL;i++){
         if(!tableau()[ligne][i].vide())
             cpt++;
     }
@@ -36,8 +36,8 @@ int Workspace::compte_ligne(int ligne){
 }
 
 void Workspace::detruire_ligne(int ligne){
-    for(int i=ligne;i<nb_lignes()-1;i++)
-        for(int j=0;j<nb_col();j++)
+    for(int i=ligne;i<NB_LIGNES-1;i++)
+        for(int j=0;j<NB_COL;j++)
             setTableau(i, j,tableau()[i+1][j]);
 
 }
@@ -65,7 +65,8 @@ void Workspace::moveG(Piece courante){
 void Workspace::moveD(Piece courante){
     bool move = true;
     for(int i=0;i<4;i++){
-        if(courante.blocs()[i].x() >= nb_col() || !tableau()[courante.blocs()[i].y()][courante.blocs()[i].x()+1].vide())
+        std::cerr<<"index tab : "<<courante.blocs()[i].y()<<" "<<courante.blocs()[i].x()+1<<std::endl;
+        if(courante.blocs()[i].x() >= NB_COL || !tableau()[courante.blocs()[i].y()][courante.blocs()[i].x()+1].vide())
             move = false;
     }
     if(move)

@@ -12,8 +12,6 @@ public:
     Workspace()
     {
         std::cerr<<"constr ws()";
-        Set_nb_col(10);
-        Set_nb_lignes(20);
         Set_tableau();
         std::cerr<<"...........OK"<<std::endl;
     }
@@ -22,29 +20,13 @@ public:
     {
         free_tableau();
     }
-    int nb_col()
-    {
-        return _nb_col;
-    }
-    void Set_nb_col(const int& val)
-    {
-        _nb_col = val;
-    }
-    int nb_lignes()
-    {
-        return _nb_lignes;
-    }
-    void Set_nb_lignes(const int& val)
-    {
-        _nb_lignes = val;
-    }
     void Set_tableau()
     {
-        _tableau = (Bloc **)malloc(_nb_lignes * sizeof(Bloc *));
-        for (int i = 0; i < nb_lignes(); i++)
-            _tableau[i] = (Bloc*)malloc(_nb_col * sizeof(Bloc));
-        for(int i=0;i<nb_lignes();i++){
-            for(int j=0;j<nb_col();j++){
+        _tableau = (Bloc **)malloc(NB_LIGNES * sizeof(Bloc *));
+        for (int i = 0; i < NB_LIGNES; i++)
+            _tableau[i] = (Bloc*)malloc(NB_COL * sizeof(Bloc));
+        for(int i=0;i<NB_LIGNES;i++){
+            for(int j=0;j<NB_COL;j++){
                 Bloc tmp(i,j,false);
                 _tableau[i][j] = tmp;
             }
@@ -52,7 +34,7 @@ public:
     }
     void free_tableau()
     {
-        for (int i = 0; i < _nb_lignes; i++)
+        for (int i = 0; i < NB_LIGNES; i++)
             free(_tableau[i]);
         free(_tableau);
 
@@ -74,8 +56,6 @@ public:
     void moveD(Piece courante);
 protected:
 private:
-    int _nb_col;
-    int _nb_lignes;
     Bloc **_tableau;
 };
 

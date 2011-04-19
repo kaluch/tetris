@@ -14,7 +14,7 @@
 #define LARGEUR_BLOC 20
 #define HAUTEUR_BLOC 20
 
-#define LARGEUR_WS 200
-#define HAUTEUR_WS 400
+#define NB_COL 10
+#define NB_LIGNES 20
 
 #endif /* GLOBALE_H_ */

@@ -27,8 +27,8 @@ public:
 		_rColor = r;
 		_gColor = g;
 		_bColor = b;
-		_x = 120;
-		_y = 420;
+		_x = NB_COL/2;
+		_y = NB_LIGNES +3;
 		int k=0;
 		for(int i=0;i<4;i++){
 		    for(int j=0;j<4;j++){
@@ -56,8 +56,8 @@ public:
 		    for(int j=0;j<4;j++){
                 if(LISTE_PIECES[id_piece][id_rot][i][j] == 1){
 
-                    int x = (i-2)*LARGEUR_BLOC + _x;
-                    int y = (j-2)*HAUTEUR_BLOC + _y;
+                    int x = (i-2);
+                    int y = (j-2);
                     _blocs.push_back(Bloc(x,y,rColor(),gColor(),bColor()));
                     k++;
                 }
@@ -67,8 +67,8 @@ public:
 	Piece() {
 		std::cerr<<"constr piece()"<<std::endl;
 		srand(time(NULL));
-		_x = 120;
-		_y = 420;
+		_x = NB_COL/2;
+		_y = NB_LIGNES+3;
 		_rColor=0;
 		_gColor=0;
 		_bColor=0;
@@ -78,8 +78,8 @@ public:
 		    for(int j=0;j<4;j++){
                 if(LISTE_PIECES[alea][1][i][j] == 1){
 
-                int x = (i-2)*LARGEUR_BLOC + _x;
-                int y = (j-2)*HAUTEUR_BLOC + _y;
+                int x = (i-2);
+                int y = (j-2);
                 _blocs.push_back(Bloc(x,y,rColor(),gColor(),bColor()));
                 k++;
                 }
