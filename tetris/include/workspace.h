@@ -9,18 +9,21 @@
 class Workspace
 {
 public:
-    Workspace()
+    Workspace(int id)
     {
         std::cerr<<"constr ws()";
-        Set_nb_col(10);
-        Set_nb_lignes(20);
-        Set_tableau();
+        //Set_nb_col(10);
+        //Set_nb_lignes(20);
+        _nb_col = NBCOL;
+        _nb_lignes = NBLIGNE;
+        Set_tableau(NBLIGNE,NBCOL,id);
+        //_tableau[NBCOL][NBLIGNE];
         std::cerr<<"...........OK"<<std::endl;
     }
-
+    Workspace(){}
     ~Workspace()
     {
-        free_tableau();
+        //free_tableau();
     }
     int nb_col()
     {
@@ -38,7 +41,7 @@ public:
     {
         _nb_lignes = val;
     }
-    void Set_tableau()
+    /*void Set_tableau()
     {
         _tableau = (Bloc **)malloc(_nb_lignes * sizeof(Bloc *));
         for (int i = 0; i < nb_lignes(); i++)
@@ -59,24 +62,47 @@ public:
     }
     Bloc **tableau(){
         return _tableau;
-    }
+    }*/
+
     void setTableau(int i,int j,Bloc bloc){
         _tableau[i][j]= bloc;
     }
+
+    void Set_tableau(int nbLigne,int nbCol,int id)
+    {
+        _tableau.resize(nbLigne+2);
+        for(int i=0; i<nbLigne+2; i++)
+        {
+            _tableau[i].resize(nbCol);
+            for(int j=0; j<nbCol; j++)
+            {
+                _tableau[i][j] = Bloc(30+LARGEUR_BLOC*j+(100+LARGEUR_WS)*id,30+LARGEUR_BLOC*i,false);
+            }
+        }
+    }
+
+    std::vector<std::vector< Bloc > > tableau()
+    {
+        return _tableau;
+    }
+
     void afficher(int x,int y);
+    void afficher_tableau();
     void switch_piece(Piece *next);
-    void ajouter_piece(Piece courante);
+    void ajouter_piece(Piece *courante);
+    void afficher_tab_nonvide();
     int compte_ligne(int ligne);
     void detruire_ligne(int ligne);
-    void descendre(Piece courante);
-    void tourner(Piece courante);
-    void moveG(Piece courante);
-    void moveD(Piece courante);
+    void descendre(Piece *courante);
+    void tourner(Piece *courante);
+    void moveG(Piece *courante);
+    void moveD(Piece *courante);
 protected:
 private:
     int _nb_col;
     int _nb_lignes;
-    Bloc **_tableau;
+    //Bloc **_tableau;
+    std::vector< std::vector< Bloc > > _tableau;
 };
 
 #endif // WORKSPACE_H

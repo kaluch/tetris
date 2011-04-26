@@ -9,56 +9,97 @@
 #define BLOC_H_
 
 #include <iostream>
-#include "stdio.h"
+#include <stdlib.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "../globale.h"
 
 class Bloc {
 public:
-    //Bloc(){}
+    Bloc(){}
 	Bloc(int x,int y,int r,int g,int b){
-	    std::cerr<<"constr bloc "<<x<<" "<<y<<" "<<r<<" "<<g<<" "<<b;
+	    //std::cerr<<"constr bloc "<<x<<" "<<y<<" "<<r<<" "<<g<<" "<<b;
         _x = x;
         _y = y;
+
+        if( x<100+LARGEUR_WS){
+            _xws=(x-20)/LARGEUR_BLOC;
+            //std::cerr<<"setXws.........."<<_xws<<std::endl;
+            }
+
+        else if(120+LARGEUR_WS<_x && _x<(120+2*LARGEUR_WS))
+            _xws=(x-20-(100+LARGEUR_WS))/20;
+        else if(2*(100+LARGEUR_WS)<_x && _x<3*(100+LARGEUR_WS))
+            _xws=(x-20-2*(100+LARGEUR_WS))/20;
+        else if(3*(100+LARGEUR_WS)<_x && _x<4*(100+LARGEUR_WS))
+            _xws=(x-20-3*(100+LARGEUR_WS))/20;
+        else {
+        _xws=0;}
+
+        _yws = (y-20)/20;
         _rColor = r;
         _gColor = g;
         _bColor = b;
         _vide = false;
-        std::cerr<<"....OK"<<std::endl;
+        //std::cerr<<_vide<<"....OK"<<std::endl;
 	}
-	Bloc(int& x,int& y,bool boolean){
+	Bloc(int x,int y,bool boolean){
         _x=x;
         _y=y;
-        _rColor = 0;
+        _xws = (x-20)/20;
+        _yws = (y-20)/20;
+        _rColor = 125;
         _gColor = 0;
         _bColor = 0;
         _vide = true;
 	}
-	//~Bloc();
+	~Bloc(){}
 
-	void afficher();
-    int x() const {return _x;}
-	void setX(int val){_x=val;}
-	int y() const {return _y;}
-	void setY(int val){_y = val;}
+    int x(){return _x;}
+    int xws(){return _xws;}
+
+	void setX(int val){
+	    _x=val;
+	    //std::cerr<<"setX.........."<<_x<<std::endl;
+        if( _x<100+LARGEUR_WS){
+            _xws=(_x-20)/LARGEUR_BLOC;
+            //std::cerr<<"setXws.........."<<_xws<<std::endl;
+            }
+
+        else if(120+LARGEUR_WS<_x && _x<(120+2*LARGEUR_WS))
+            _xws=(_x-20-(100+LARGEUR_WS))/20;
+        else if(2*(100+LARGEUR_WS)<_x && _x<3*(100+LARGEUR_WS))
+            _xws=(_x-20-2*(100+LARGEUR_WS))/20;
+        else if(3*(100+LARGEUR_WS)<_x && _x<4*(100+LARGEUR_WS))
+            _xws=(_x-20-3*(100+LARGEUR_WS))/20;
+        else {
+        _xws=0;}
+	}
+
+
+	int y(){return _y;}
+	int yws(){return _yws;}
+	void setY(int val){_y=val;_yws=(_y-20)/HAUTEUR_BLOC;}
 	int rColor() {return _rColor;}
 	int gColor() {return _gColor;}
 	int bColor() {return _bColor;}
-	void setBloc(const int& x,const int& y,const int& r,const int& g,const int& b){
+	void setBloc(int x,int y,int r,int g,int b){
 	    _x = x;
         _y = y;
         _rColor = r;
         _gColor = g;
         _bColor = b;
 	}
-	bool vide()const{return _vide;}
+	bool vide(){return _vide;}
+	void afficher();
 protected:
 	int _x;
 	int _y;
+    int _xws;
+	int _yws;
 	int _rColor;
 	int _gColor;
 	int _bColor;
 	bool _vide;
 };
-#endif /* BLOC_H_ */
+#endif // BLOC_H_
