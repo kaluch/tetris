@@ -87,7 +87,7 @@ void Jeu::tester_fin()
 
 void Jeu::gestion_event(SDL_Event event,bool *continuer)
 {
-    //SDL_EnableKeyRepeat(300,50);
+    //  SDL_EnableKeyRepeat(300,50);
     SDL_PollEvent(&event);
     switch (event.type)
     {

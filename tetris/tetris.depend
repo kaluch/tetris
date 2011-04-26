@@ -199,7 +199,7 @@
 	"Piece.h"
 	"workspace.h"
 
-1303759322 c:\users\seb\desktop\tetris\tetris\include\piece.h
+1303819963 c:\users\seb\desktop\tetris\tetris\include\piece.h
 	"Liste_piece.h"
 	<iostream>
 	<time.h>
@@ -215,7 +215,7 @@
 
 1303653092 c:\users\seb\desktop\tetris\tetris\include\liste_piece.h
 
-1303732589 c:\users\seb\desktop\tetris\tetris\globale.h
+1303820204 c:\users\seb\desktop\tetris\tetris\globale.h
 
 1303684943 c:\users\seb\desktop\tetris\tetris\include\bloc.h
 	<iostream>
@@ -224,7 +224,7 @@
 	<GL/glu.h>
 	"../globale.h"
 
-1303759322 c:\users\seb\desktop\tetris\tetris\include\workspace.h
+1303819837 c:\users\seb\desktop\tetris\tetris\include\workspace.h
 	<iostream>
 	<stdlib.h>
 	"Piece.h"
@@ -244,7 +244,7 @@
 1303733030 source:c:\users\seb\desktop\tetris\tetris\src\bloc.cpp
 	"../include/Bloc.h"
 
-1303766982 source:c:\users\seb\desktop\tetris\tetris\src\jeu.cpp
+1303820073 source:c:\users\seb\desktop\tetris\tetris\src\jeu.cpp
 	"../include/Jeu.h"
 
 1303759753 source:c:\users\seb\desktop\tetris\tetris\src\joueur.cpp

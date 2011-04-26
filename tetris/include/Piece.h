@@ -39,6 +39,7 @@ public:
                 {
                     int x = (i-2)*LARGEUR_BLOC + _x;
                     int y = (j-2)*HAUTEUR_BLOC + _y;
+
                     _blocs.push_back(Bloc(x,y,rColor(),gColor(),bColor()));
                     k++;
                 }
@@ -69,6 +70,7 @@ public:
                     int y = (j-2)*HAUTEUR_BLOC + _y;
                     _blocs.push_back(Bloc(x,y,rColor(),gColor(),bColor()));
                     k++;
+
                 }
             }
         }
