@@ -6,7 +6,7 @@ void Joueur::init_next_piece()
     {
         //sleep(1000);
         _next_piece.push_back(Piece());
-        _next_piece[i].setX(80+LARGEUR_WS+_id_joueur*(100+LARGEUR_WS));
+        _next_piece[i].setX(80+LARGEUR_BLOC * NB_COL+_id_joueur*(100+LARGEUR_BLOC * NB_COL));
         _next_piece[i].translateY(-i*100);
     }
 }
@@ -14,7 +14,7 @@ void Joueur::init_next_piece()
 void Joueur::init_next()
 {
         _next_piece[_nb_next-1] = Piece();
-        _next_piece[_nb_next-1].setX(80+LARGEUR_WS+_id_joueur*(100+LARGEUR_WS));
+        _next_piece[_nb_next-1].setX(80+LARGEUR_BLOC * NB_COL+_id_joueur*(100+LARGEUR_BLOC * NB_COL));
         _next_piece[_nb_next-1].translateY(-(_nb_next-1)*100);
 }
 
@@ -27,8 +27,8 @@ void Joueur::sleep(unsigned int mseconds)
 void Joueur::afficher()
 {
     //std::cerr << "Joueur " << nom() <<id_joueur()<< std::endl;
-    workspace().afficher(20+id_joueur()*(100+LARGEUR_WS),20);
-    if(_piece_courante->y()<HAUTEUR_WS+20)
+    workspace().afficher(20+id_joueur()*(100+LARGEUR_BLOC * NB_COL),20);
+    if(_piece_courante->y()<HAUTEUR_BLOC * NB_LIGNES+20)
     _piece_courante->afficher();
     for(int i=0; i<nb_next(); i++)
     {

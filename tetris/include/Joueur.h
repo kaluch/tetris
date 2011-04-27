@@ -23,6 +23,7 @@ protected:
     int _cmp;
     int _speed;
     int _cmpSpeed;
+    bool cpu;
 
 public:
     Joueur(std::string name,int id) :_nom(name), _id_joueur(id),_score(0)
@@ -32,7 +33,7 @@ public:
         std::cerr<<"init next"<<std::endl;
 
         _piece_courante = new Piece();
-        _piece_courante->translateX(_id_joueur*(100+LARGEUR_WS));
+        _piece_courante->translateX(_id_joueur*(100+LARGEUR_BLOC * NB_COL));
 
         init_next_piece();
         std::cerr<<"fin init next"<<std::endl;

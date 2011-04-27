@@ -14,6 +14,7 @@ void Jeu::init_SDL(SDL_Surface *screen)
     SDL_Init(SDL_INIT_VIDEO);
     screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL );
     SDL_WM_SetCaption("TETRIS SOUCHET DIGNOIRE 2011", NULL);
+    SDL_EnableKeyRepeat(80,80);
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
     gluOrtho2D(0,LARGEUR_ECRAN,0,HAUTEUR_ECRAN);
@@ -75,9 +76,9 @@ void Jeu::tester_fin()
 {
     for(unsigned int i = 0; i< _joueurs.size(); i++)
     {
-        if( ! _joueurs[i].workspace().tableau()[NBLIGNE-4][NBCOL/2].vide() ||
-                ! _joueurs[i].workspace().tableau()[NBLIGNE-4][NBCOL/2 -1].vide() ||
-                ! _joueurs[i].workspace().tableau()[NBLIGNE-4][NBCOL/2 +1].vide())
+        if( ! _joueurs[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2].vide() ||
+                ! _joueurs[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2 -1].vide() ||
+                ! _joueurs[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2 +1].vide())
         {
             _joueurs[i].setPlay(false);
             //std::cerr<<" tester fin......... play = "<<_joueurs[i].play()<<std::endl;

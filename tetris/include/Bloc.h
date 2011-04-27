@@ -22,17 +22,17 @@ public:
         _x = x;
         _y = y;
 
-        if( x<100+LARGEUR_WS){
+        if( x<100+LARGEUR_BLOC * NB_COL){
             _xws=(x-20)/LARGEUR_BLOC;
             //std::cerr<<"setXws.........."<<_xws<<std::endl;
             }
 
-        else if(120+LARGEUR_WS<_x && _x<(120+2*LARGEUR_WS))
-            _xws=(x-20-(100+LARGEUR_WS))/20;
-        else if(2*(100+LARGEUR_WS)<_x && _x<3*(100+LARGEUR_WS))
-            _xws=(x-20-2*(100+LARGEUR_WS))/20;
-        else if(3*(100+LARGEUR_WS)<_x && _x<4*(100+LARGEUR_WS))
-            _xws=(x-20-3*(100+LARGEUR_WS))/20;
+        else if(120+LARGEUR_BLOC * NB_COL<_x && _x<(120+2*LARGEUR_BLOC * NB_COL))
+            _xws=(x-20-(100+LARGEUR_BLOC * NB_COL))/20;
+        else if(2*(100+LARGEUR_BLOC * NB_COL)<_x && _x<3*(100+LARGEUR_BLOC * NB_COL))
+            _xws=(x-20-2*(100+LARGEUR_BLOC * NB_COL))/20;
+        else if(3*(100+LARGEUR_BLOC * NB_COL)<_x && _x<4*(100+LARGEUR_BLOC * NB_COL))
+            _xws=(x-20-3*(100+LARGEUR_BLOC * NB_COL))/20;
         else {
         _xws=0;}
 
@@ -61,17 +61,17 @@ public:
 	void setX(int val){
 	    _x=val;
 	    //std::cerr<<"setX.........."<<_x<<std::endl;
-        if( _x<100+LARGEUR_WS){
+        if( _x<100+LARGEUR_BLOC * NB_COL){
             _xws=(_x-20)/LARGEUR_BLOC;
             //std::cerr<<"setXws.........."<<_xws<<std::endl;
             }
 
-        else if(120+LARGEUR_WS<_x && _x<(120+2*LARGEUR_WS))
-            _xws=(_x-20-(100+LARGEUR_WS))/20;
-        else if(2*(100+LARGEUR_WS)<_x && _x<3*(100+LARGEUR_WS))
-            _xws=(_x-20-2*(100+LARGEUR_WS))/20;
-        else if(3*(100+LARGEUR_WS)<_x && _x<4*(100+LARGEUR_WS))
-            _xws=(_x-20-3*(100+LARGEUR_WS))/20;
+        else if(120+LARGEUR_BLOC * NB_COL<_x && _x<(120+2*LARGEUR_BLOC * NB_COL))
+            _xws=(_x-20-(100+LARGEUR_BLOC * NB_COL))/20;
+        else if(2*(100+LARGEUR_BLOC * NB_COL)<_x && _x<3*(100+LARGEUR_BLOC * NB_COL))
+            _xws=(_x-20-2*(100+LARGEUR_BLOC * NB_COL))/20;
+        else if(3*(100+LARGEUR_BLOC * NB_COL)<_x && _x<4*(100+LARGEUR_BLOC * NB_COL))
+            _xws=(_x-20-3*(100+LARGEUR_BLOC * NB_COL))/20;
         else {
         _xws=0;}
 	}

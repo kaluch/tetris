@@ -17,10 +17,4 @@
 #define NB_COL 10
 #define NB_LIGNES 20
 
-#define NBLIGNE 20
-#define NBCOL 10
-
-#define LARGEUR_WS 200
-#define HAUTEUR_WS 400
-
 #endif /* GLOBALE_H_ */
