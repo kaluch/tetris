@@ -2,7 +2,7 @@
 #define IA_H
 
 
-virtual class IA
+class IA
 {
     public:
         /** Default constructor */

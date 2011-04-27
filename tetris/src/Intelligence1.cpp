@@ -1,4 +1,4 @@
-#include "Intelligence1.h"
+#include "../include/Intelligence1.h"
 
 Intelligence1::Intelligence1()
 {

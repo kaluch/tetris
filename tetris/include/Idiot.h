@@ -1,7 +1,7 @@
 #ifndef IDIOT_H
 #define IDIOT_H
 
-#include <IA.h>
+#include "IA.h"
 
 
 class Idiot : public IA

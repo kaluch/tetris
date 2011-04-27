@@ -1,7 +1,7 @@
 #ifndef INTELLIGENCE1_H
 #define INTELLIGENCE1_H
 
-#include <IA.h>
+#include "IA.h"
 
 
 class Intelligence1 : public IA
