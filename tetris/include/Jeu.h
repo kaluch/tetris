@@ -18,6 +18,9 @@
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <errno.h>
+#include <time.h>
+
 class Jeu
 {
 public:
@@ -33,7 +36,7 @@ public:
             //_joueurs.push_back(j);
             _joueurs.push_back(Joueur("j",i));
             //Joueur tmp("j"+out.str(),i);
-            std::cerr<<"joueur créé n°: "<<i<<std::endl;
+            std::cerr<<"joueur crï¿½ï¿½ nï¿½: "<<i<<std::endl;
         }
         std::cerr<<"init joueurs ...........OK"<<std::endl;
         init_SDL(_screen);

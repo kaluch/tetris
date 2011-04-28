@@ -4,6 +4,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Piece.h"
+#include <SDL/SDL.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include "../globale.h"
 
 class Workspace

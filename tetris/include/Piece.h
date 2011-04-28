@@ -49,7 +49,6 @@ public:
     Piece()
     {
         std::cerr<<"constr piece()"<<std::endl;
-        srand(time(NULL));
         _x = 30+LARGEUR_BLOC * NB_COL/2;
         _y = 50+HAUTEUR_BLOC * NB_LIGNES;
         _rColor=0;
