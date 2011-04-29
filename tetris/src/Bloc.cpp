@@ -25,5 +25,16 @@ void Bloc::afficher()
         //std::cerr<<"vertice 4"<<x()+LARGEUR_BLOC/2<<y()+HAUTEUR_BLOC/2<<std::endl;
 
         glEnd();
+        glBegin(GL_LINE_LOOP),
+        glColor3ub(80,80,80);
+                glVertex2d(_x-LARGEUR_BLOC/2,_y+HAUTEUR_BLOC/2);
+        glVertex2d(_x-(LARGEUR_BLOC/2),_y-HAUTEUR_BLOC/2);
+
+        glVertex2d(_x+LARGEUR_BLOC/2,_y-HAUTEUR_BLOC/2);
+
+        glVertex2d(_x+LARGEUR_BLOC/2,_y+HAUTEUR_BLOC/2);
+
+
+        glEnd();
    }
 }

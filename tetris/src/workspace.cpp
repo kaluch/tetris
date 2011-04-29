@@ -8,9 +8,9 @@ void Workspace::afficher(int x,int y)
     glBegin(GL_LINE_LOOP);
     glColor3ub(0,255,255);
     glVertex2d(x,y);
-    glVertex2d(x,y+HAUTEUR_WS);
-    glVertex2d(x+LARGEUR_WS,y+HAUTEUR_WS);
-    glVertex2d(x+LARGEUR_WS,y);
+    glVertex2d(x,y+HAUTEUR_BLOC * NB_LIGNES);
+    glVertex2d(x+LARGEUR_BLOC * NB_COL,y+HAUTEUR_BLOC * NB_LIGNES);
+    glVertex2d(x+LARGEUR_BLOC * NB_COL,y);
     glEnd();
 
 }

@@ -4,6 +4,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Piece.h"
+#include <SDL/SDL.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include "../globale.h"
 
 class Workspace
@@ -14,11 +17,11 @@ public:
         std::cerr<<"constr ws()";
         //Set_nb_col(10);
         //Set_nb_lignes(20);
-        _nb_col = NBCOL;
-        _nb_lignes = NBLIGNE;
+        _nb_col = NB_COL;
+        _nb_lignes = NB_LIGNES;
 
-        Set_tableau(NBLIGNE,NBCOL,id);
-        //_tableau[NBCOL][NBLIGNE];        std::cerr<<"...........OK"<<std::endl;
+        Set_tableau(NB_LIGNES,NB_COL,id);
+        //_tableau[NB_COL][NB_LIGNES];        std::cerr<<"...........OK"<<std::endl;
     }
     Workspace(){}
     ~Workspace()
@@ -76,7 +79,7 @@ public:
             _tableau[i].resize(nbCol);
             for(int j=0; j<nbCol; j++)
             {
-                _tableau[i][j] = Bloc(30+LARGEUR_BLOC*j+(100+LARGEUR_WS)*id,30+LARGEUR_BLOC*i,false);
+                _tableau[i][j] = Bloc(30+LARGEUR_BLOC*j+(100+LARGEUR_BLOC * NB_COL)*id,30+LARGEUR_BLOC*i,false);
             }
         }
     }
