@@ -114,6 +114,5 @@ void Joueur::traitement_workspace()
         setScore(_score + k*k);
         std::cerr<<"SCORE = "<<_score<<std::endl;
         }
-
 }
 

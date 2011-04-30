@@ -23,7 +23,6 @@ protected:
     int _cmp;
     int _speed;
     int _cmpSpeed;
-    bool cpu;
 
 public:
     Joueur(std::string name,int id) :_nom(name), _id_joueur(id),_score(0)
@@ -116,6 +115,7 @@ public:
     }
     void setPlay(bool play){ _play = play;}
     bool play(){return _play;}
+
 };
 
 #endif // JOUEUR_H
