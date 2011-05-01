@@ -17,4 +17,6 @@
 #define NB_COL 10
 #define NB_LIGNES 20
 
+#define TIME_REP 100
+
 #endif /* GLOBALE_H_ */

@@ -117,3 +117,15 @@ void Joueur::traitement_workspace()
 
 }
 
+void Joueur::charger_touches(int tUp, int tDown,int tLeft,int tRight)
+{
+    setUp(tUp);
+    setDown(tDown);
+    setLeft(tLeft);
+    setRight(tRight);
+    setLastUp(0);
+    setLastDown(0);
+    setLastLeft(0);
+    setLastRight(0);
+
+}

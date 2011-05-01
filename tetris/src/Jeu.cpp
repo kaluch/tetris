@@ -16,7 +16,7 @@ void Jeu::init_SDL(SDL_Surface *screen)
     screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL);
     srand(time(NULL));
     SDL_WM_SetCaption("TETRIS SOUCHET DIGNOIRE 2011", NULL);
-    SDL_EnableKeyRepeat(80,80);
+    SDL_EnableKeyRepeat(300,50);
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
     gluOrtho2D(0,LARGEUR_ECRAN,0,HAUTEUR_ECRAN);
@@ -93,60 +93,107 @@ void Jeu::tester_fin()
 
 void Jeu::gestion_event(SDL_Event event,bool *continuer)
 {
-    //  SDL_EnableKeyRepeat(300,50);
-    SDL_PollEvent(&event);
+     SDL_PollEvent(&event);
     switch (event.type)
     {
     case SDL_QUIT:
         *continuer = false;
         break;
     case SDL_KEYDOWN:
-        switch(event.key.keysym.sym)
-        {
-            // JOUEUR 1
-        case SDLK_UP:
-            std::cerr<<"Tourner"<<std::endl;
-            _joueurs[1].workspace().tourner(_joueurs[1].piece_courante());
-            break;
-        case SDLK_DOWN:
-            std::cerr<<"Descendre"<<std::endl;
-            _joueurs[1].workspace().descendre(_joueurs[1].piece_courante());
-            break;
-        case SDLK_LEFT:
-            std::cerr<<"Left"<<std::endl;
-            _joueurs[1].workspace().moveG(_joueurs[1].piece_courante());
-            break;
-        case SDLK_RIGHT:
-            std::cerr<<"Right"<<std::endl;
-            _joueurs[1].workspace().moveD(_joueurs[1].piece_courante());
-            break;
-        case SDLK_ESCAPE:
+      switch(event.key.keysym.sym)
+      {
+          case SDLK_ESCAPE:
             std::cerr<<"Escape"<<std::endl;
             *continuer = false;
             break;
         default:
             break;
+      }
 
-            // JOUEUR 0
-        case SDLK_w:
-            std::cerr<<"Tourner"<<std::endl;
-            _joueurs[0].workspace().tourner(_joueurs[0].piece_courante());
-            break;
-        case SDLK_s:
-            std::cerr<<"Descendre"<<std::endl;
-            _joueurs[0].workspace().descendre(_joueurs[0].piece_courante());
-            break;
-        case SDLK_a:
-            std::cerr<<"Left"<<std::endl;
-            _joueurs[0].workspace().moveG(_joueurs[0].piece_courante());
-            break;
-        case SDLK_d:
-            std::cerr<<"Right"<<std::endl;
-            _joueurs[0].workspace().moveD(_joueurs[0].piece_courante());
-            break;
-
-        }
     default:
         break;
     }
+    Uint8 *touches = SDL_GetKeyState(NULL);
+    printf("VAL UP %x\n",joueurs()[0].toucheUp());
+        std::cerr<<"UP : "<<joueurs()[0].toucheUp()<<" "<<SDLK_UP<<std::endl;
+    if(touches[joueurs()[0].toucheUp()]){
+        if(joueurs()[0].lastUp() == 0){
+            joueurs()[0].workspace().tourner(joueurs()[0].piece_courante());
+            joueurs()[0].setLastUp(10);
+            std::cerr<<"Tourner "<<joueurs()[0].lastUp()<<std::endl;
+        }
+    }
+    else{
+        joueurs()[0].setLastUp(joueurs()[0].lastUp() -1);
+        std::cerr<<joueurs()[0].lastUp()<<std::endl;
+    }
+
+//    for(int i=0;i<joueurs().size();i++)
+//    {
+//        if(touches[joueurs()[i].toucheUp()])
+//            joueurs()[i].workspace().tourner(joueurs()[i].piece_courante());
+//        else if(touches[joueurs()[i].toucheLeft()])
+//            joueurs()[i].workspace().moveG(joueurs()[i].piece_courante());
+//        else if(touches[joueurs()[i].toucheRight()])
+//            joueurs()[i].workspace().moveD(joueurs()[i].piece_courante());
+//        else if(touches[joueurs()[i].toucheDown()])
+//            joueurs()[i].workspace().descendre(joueurs()[i].piece_courante());
+//    }
+//    //  SDL_EnableKeyRepeat(300,50);
+//
+//    SDL_PollEvent(&event);
+//    switch (event.type)
+//    {
+//    case SDL_QUIT:
+//        *continuer = false;
+//        break;
+//    case SDL_KEYDOWN:
+//        switch(event.key.keysym.sym)
+//        {
+//            // JOUEUR 1
+//        case SDLK_UP:
+//            std::cerr<<"Tourner"<<std::endl;
+//            _joueurs[1].workspace().tourner(_joueurs[1].piece_courante());
+//            break;
+//        case SDLK_DOWN:
+//            std::cerr<<"Descendre"<<std::endl;
+//            _joueurs[1].workspace().descendre(_joueurs[1].piece_courante());
+//            break;
+//        case SDLK_LEFT:
+//            std::cerr<<"Left"<<std::endl;
+//            _joueurs[1].workspace().moveG(_joueurs[1].piece_courante());
+//            break;
+//        case SDLK_RIGHT:
+//            std::cerr<<"Right"<<std::endl;
+//            _joueurs[1].workspace().moveD(_joueurs[1].piece_courante());
+//            break;
+//        case SDLK_ESCAPE:
+//            std::cerr<<"Escape"<<std::endl;
+//            *continuer = false;
+//            break;
+//        default:
+//            break;
+//
+//            // JOUEUR 0
+//        case SDLK_w:
+//            std::cerr<<"Tourner"<<std::endl;
+//            _joueurs[0].workspace().tourner(_joueurs[0].piece_courante());
+//            break;
+//        case SDLK_s:
+//            std::cerr<<"Descendre"<<std::endl;
+//            _joueurs[0].workspace().descendre(_joueurs[0].piece_courante());
+//            break;
+//        case SDLK_a:
+//            std::cerr<<"Left"<<std::endl;
+//            _joueurs[0].workspace().moveG(_joueurs[0].piece_courante());
+//            break;
+//        case SDLK_d:
+//            std::cerr<<"Right"<<std::endl;
+//            _joueurs[0].workspace().moveD(_joueurs[0].piece_courante());
+//            break;
+//
+//        }
+//    default:
+//        break;
+//    }
 }
