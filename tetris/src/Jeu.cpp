@@ -37,19 +37,12 @@ void Jeu::lancer_jeu()
     std::cerr<<"\n\n.........................Debut de la partie.........................\n\n"<<std::endl;
     std::cerr<<"....Nbre de joueurs = "<<_joueurs.size()<<std::endl;
 
-    //SDL_Event event;
     bool continuer = true;
 
     while(continuer)
     {
-        /*SDL_WaitEvent(&event);
-        	switch (event.type) {
-        	case SDL_QUIT:
-        		continuer = false;
-        	}*/
         tester_fin();
         gestion_event(_event,&continuer);
-
         glClear(GL_COLOR_BUFFER_BIT);
         for(unsigned int i = 0; i< _joueurs.size(); i++)
         {
@@ -117,14 +110,14 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer)
     printf("VAL UP %x\n",joueurs()[0].toucheUp());
         std::cerr<<"UP : "<<joueurs()[0].toucheUp()<<" "<<SDLK_UP<<std::endl;
     if(touches[joueurs()[0].toucheUp()]){
-        if(joueurs()[0].lastUp() == 0){
+        if(joueurs()[0].lastUp()){
             joueurs()[0].workspace().tourner(joueurs()[0].piece_courante());
-            joueurs()[0].setLastUp(10);
+            joueurs()[0].setLastUp(false);
             std::cerr<<"Tourner "<<joueurs()[0].lastUp()<<std::endl;
         }
     }
     else{
-        joueurs()[0].setLastUp(joueurs()[0].lastUp() -1);
+        joueurs()[0].setLastUp(true);
         std::cerr<<joueurs()[0].lastUp()<<std::endl;
     }
 

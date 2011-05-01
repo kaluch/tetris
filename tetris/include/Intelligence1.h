@@ -7,8 +7,8 @@
 class Intelligence1 : public IA
 {
     public:
-        /** Default constructor */
-        Intelligence1();
+        Intelligence1(){}
+
     protected:
     private:
 };

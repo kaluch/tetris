@@ -12,6 +12,7 @@
 #include <vector>
 #include <SDL/SDL.h>
 #include "Joueur.h"
+#include "Computer.h"
 #include "../globale.h"
 
 
@@ -32,12 +33,13 @@ public:
 
         for (int i = 0; i < nb_joueurs; i++){
             std::cerr<<"ajout j"<<i<<std::endl;
-            //Joueur j("j",i);
-            //_joueurs.push_back(j);
             _joueurs.push_back(Joueur("j",i));
-            //Joueur tmp("j"+out.str(),i);
-            std::cerr<<"joueur cr�� n�: "<<i<<std::endl;
+            std::cerr<<"joueur cree n°: "<<i<<std::endl;
         }
+        std::cerr<<"ajout IA"<<nb_joueurs<<std::endl;
+        _joueurs.push_back(Computer("j",nb_joueurs,0));
+        std::cerr<<"joueur cree n°: "<<nb_joueurs<<std::endl;
+
         std::cerr<<"init joueurs ...........OK"<<std::endl;
         init_SDL(_screen);
         lancer_jeu();

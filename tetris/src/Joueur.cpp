@@ -114,7 +114,6 @@ void Joueur::traitement_workspace()
         setScore(_score + k*k);
         std::cerr<<"SCORE = "<<_score<<std::endl;
         }
-
 }
 
 void Joueur::charger_touches(int tUp, int tDown,int tLeft,int tRight)
@@ -123,9 +122,9 @@ void Joueur::charger_touches(int tUp, int tDown,int tLeft,int tRight)
     setDown(tDown);
     setLeft(tLeft);
     setRight(tRight);
-    setLastUp(0);
-    setLastDown(0);
-    setLastLeft(0);
-    setLastRight(0);
+    setLastUp(true);
+    setLastDown(true);
+    setLastLeft(true);
+    setLastRight(true);
 
 }

@@ -29,10 +29,10 @@ protected:
     int _toucheDown;
     int _toucheLeft;
     int _toucheRight;
-    int _lastUp;
-    int _lastDown;
-    int _lastLeft;
-    int _lastRight;
+    bool _lastUp;
+    bool _lastDown;
+    bool _lastLeft;
+    bool _lastRight;
 
 public:
     Joueur(std::string name,int id) :_nom(name), _id_joueur(id),_score(0)
@@ -134,20 +134,21 @@ public:
     void setLeft(int val){ _toucheLeft = val;}
     void setRight(int val){ _toucheRight = val;}
 
-    int lastUp(){return _lastUp;}
-    int lastDown(){return _lastDown;}
-    int lastLeft(){return _lastLeft;}
-    int lastRight(){return _lastRight;}
-    void setLastUp(int val){ _lastUp = val;
+    bool lastUp(){return _lastUp;}
+    bool lastDown(){return _lastDown;}
+    bool lastLeft(){return _lastLeft;}
+    bool lastRight(){return _lastRight;}
+    void setLastUp(bool val){ _lastUp = val;
         std::cerr<<"Mutation lastup : "<<_lastUp<<std::endl;
     }
-    void setLastDown(int val){ _lastDown = val;}
-    void setLastLeft(int val){ _lastLeft = val;}
-    void setLastRight(int val){ _lastRight = val;}
+    void setLastDown(bool val){ _lastDown = val;}
+    void setLastLeft(bool val){ _lastLeft = val;}
+    void setLastRight(bool val){ _lastRight = val;}
 
 
     void setPlay(bool play){ _play = play;}
     bool play(){return _play;}
+
 };
 
 #endif // JOUEUR_H
