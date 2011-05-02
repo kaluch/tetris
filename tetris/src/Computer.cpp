@@ -19,6 +19,7 @@ void Computer::move(){
 void Computer::idiot(){
     if(piece_courante()->downest().yws() > 0){
         piece_courante()->tourner();
+        piece_courante()->descendre();
         setCmpSpeed(_cmpSpeed + 1);
         if(_speed>15 && _cmpSpeed == 15){
             setCmpSpeed(0);

@@ -13,6 +13,7 @@
 #include <SDL/SDL.h>
 #include "Joueur.h"
 #include "Computer.h"
+#include "Humain.h"
 #include "../globale.h"
 
 
@@ -21,6 +22,8 @@
 #include <GL/glu.h>
 #include <errno.h>
 #include <time.h>
+#include <typeinfo>
+
 
 class Jeu
 {
@@ -33,11 +36,11 @@ public:
 
         for (int i = 0; i < nb_joueurs; i++){
             std::cerr<<"ajout j"<<i<<std::endl;
-            _joueurs.push_back(Joueur("j",i));
+            _humains.push_back(Humain("j",i));
             std::cerr<<"joueur cree n°: "<<i<<std::endl;
         }
         std::cerr<<"ajout IA"<<nb_joueurs<<std::endl;
-        _joueurs.push_back(Computer("j",nb_joueurs,0));
+        _computers.push_back(Computer("j",nb_joueurs,0));
         std::cerr<<"joueur cree n°: "<<nb_joueurs<<std::endl;
 
         std::cerr<<"init joueurs ...........OK"<<std::endl;
@@ -52,14 +55,18 @@ public:
     void lancer_jeu();
     void tester_fin();
     void gestion_event(SDL_Event event, bool *continuer);
-    std::vector<Joueur> joueurs(){
-        return _joueurs;
+    std::vector<Humain> humains(){
+        return _humains;
         }
+    std::vector<Computer> computers(){
+            return _computers;
+            }
 
 protected:
-    std::vector<Joueur> _joueurs;
+    std::vector<Humain> _humains;
     SDL_Surface *_screen;
     SDL_Event _event;
+    std::vector<Computer> _computers;
 };
 
 #endif /* JEU_H_ */
