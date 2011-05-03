@@ -246,6 +246,7 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer)
 ////        else if(touches[humains()[i].toucheDown()])
 ////            humains()[i].workspace().descendre(humains()[i].piece_courante());
 //    //  SDL_EnableKeyRepeat(300,50);s
+
 //
 //    SDL_PollEvent(&event);
 //    switch (event.type)
@@ -296,6 +297,7 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer)
 //        case SDLK_d:
 //            std::cerr<<"Right"<<std::endl;
 //            _humains[0].workspace().moveD(_humains[0].piece_courante());
+
 //            break;
 //
 //        }

@@ -40,7 +40,7 @@ public:
             std::cerr<<"joueur cree n°: "<<i<<std::endl;
         }
         std::cerr<<"ajout IA"<<nb_joueurs<<std::endl;
-        _computers.push_back(Computer("j",nb_joueurs,0));
+       // _computers.push_back(Computer("j",nb_joueurs,0));
         std::cerr<<"joueur cree n°: "<<nb_joueurs<<std::endl;
 
         std::cerr<<"init joueurs ...........OK"<<std::endl;

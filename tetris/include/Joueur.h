@@ -38,8 +38,9 @@ public:
         //_workspace.s
 
     }
-
-
+//    ~Joueur(){
+//        delete(_piece_courante);
+//    }
             void init_next_piece();
     void init_next();
     void sleep(unsigned int mseconds);
