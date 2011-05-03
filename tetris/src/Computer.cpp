@@ -1,10 +1,10 @@
 #include "../include/Computer.h"
 
 void Computer::move(){
-    std::cerr<<"move ia"<<std::endl;
+    //std::cerr<<"move ia"<<std::endl;
     switch(_ia){
         case 0:
-            std::cerr<<"IDIOT"<<std::endl;
+            //std::cerr<<"IDIOT"<<std::endl;
             idiot();
             break;
         case 1:

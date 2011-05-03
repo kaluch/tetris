@@ -15,6 +15,7 @@
 #include "Computer.h"
 #include "Humain.h"
 #include "../globale.h"
+#include "sdlglutils.h"
 
 
 #include <SDL/SDL.h>
@@ -23,7 +24,6 @@
 #include <errno.h>
 #include <time.h>
 #include <typeinfo>
-
 
 class Jeu
 {
@@ -40,7 +40,7 @@ public:
             std::cerr<<"joueur cree n°: "<<i<<std::endl;
         }
         std::cerr<<"ajout IA"<<nb_joueurs<<std::endl;
-       // _computers.push_back(Computer("j",nb_joueurs,0));
+        _computers.push_back(Computer("j",nb_joueurs,0));
         std::cerr<<"joueur cree n°: "<<nb_joueurs<<std::endl;
 
         std::cerr<<"init joueurs ...........OK"<<std::endl;
@@ -52,6 +52,7 @@ public:
 
     void init_SDL(SDL_Surface *screen);
     void afficher();
+    void afficherFond();
     void lancer_jeu();
     void tester_fin();
     void gestion_event(SDL_Event event, bool *continuer);

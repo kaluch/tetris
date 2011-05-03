@@ -9,6 +9,8 @@
 #include <GL/glu.h>
 #include "Piece.h"
 #include "workspace.h"
+#include "sdlglutils.h"
+
 
 class Joueur
 {
@@ -65,7 +67,6 @@ public:
     int id_joueur()    {        return _id_joueur;    }
     int nb_next()    {        return _nb_next;    }
     std::vector<Piece> next_piece(){        return _next_piece;    }
-
 
 
 
