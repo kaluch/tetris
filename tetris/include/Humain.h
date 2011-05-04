@@ -1,0 +1,54 @@
+#ifndef HUMAIN_H
+#define HUMAIN_H
+
+#include <SDL/SDL.h>
+#include <iostream>
+#include "Joueur.h"
+class Humain : public Joueur
+{
+    public:
+        Humain(std::string name,int id) : Joueur(name, id){
+
+        if(id == 0)
+            charger_touches(SDLK_UP,SDLK_DOWN,SDLK_LEFT,SDLK_RIGHT);
+        else if(id == 1)
+            charger_touches(SDLK_w,SDLK_s,SDLK_a,SDLK_d);
+        else if(id == 2)
+            charger_touches(SDLK_i,SDLK_k,SDLK_j,SDLK_l);
+        }
+
+    void charger_touches(int tUP, int tDown,int tLeft,int tRight);
+    int toucheUp(){ return _toucheUp;}
+    int toucheDown(){ return _toucheDown;}
+    int toucheLeft(){ return _toucheLeft;}
+    int toucheRight(){ return _toucheRight;}
+    void setUp(int val){ _toucheUp = val;}
+    void setDown(int val){ _toucheDown = val;}
+    void setLeft(int val){ _toucheLeft = val;}
+    void setRight(int val){ _toucheRight = val;}
+
+    bool lastUp(){return _lastUp;}
+    bool lastDown(){return _lastDown;}
+    bool lastLeft(){return _lastLeft;}
+    bool lastRight(){return _lastRight;}
+    void setLastUp(bool val){ _lastUp = val;
+        std::cerr<<"Mutation lastup : "<<_lastUp<<std::endl;
+    }
+    void setLastDown(bool val){ _lastDown = val;}
+    void setLastLeft(bool val){ _lastLeft = val;}
+    void setLastRight(bool val){ _lastRight = val;}
+    protected:
+
+    bool _cpu;
+    int _toucheUp;
+    int _toucheDown;
+    int _toucheLeft;
+    int _toucheRight;
+    bool _lastUp;
+    bool _lastDown;
+    bool _lastLeft;
+    bool _lastRight;
+    private:
+};
+
+#endif // HUMAIN_H
