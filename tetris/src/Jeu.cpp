@@ -6,8 +6,7 @@
  */
 
 #include "../include/Jeu.h"
-
-
+GLuint texture1;
 
 void Jeu::init_SDL(SDL_Surface *screen)
 {
@@ -20,6 +19,9 @@ void Jeu::init_SDL(SDL_Surface *screen)
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
     gluOrtho2D(0,LARGEUR_ECRAN,0,HAUTEUR_ECRAN);
+    texture1 = loadTexture("fond.png");
+    glEnd();
+
     if(screen == NULL)
         	std::cerr<<" ERREUR SCREEN SDL "<<SDL_GetError()<<std::endl;
     else
@@ -34,6 +36,19 @@ void Jeu::afficher()
         _computers[i].afficher();
 }
 
+void Jeu::afficherFond(){
+
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glBegin(GL_QUADS);
+    glColor3ub(255,255,255);
+    glTexCoord2d(0,1);  glVertex2d(0,HAUTEUR_ECRAN);
+    glTexCoord2d(0,0);  glVertex2d(0,0);
+    glTexCoord2d(1,0);  glVertex2d(LARGEUR_ECRAN,0);
+    glTexCoord2d(1,1);  glVertex2d(LARGEUR_ECRAN,HAUTEUR_ECRAN);
+    glEnd();
+
+}
+
 void Jeu::lancer_jeu()
 {
     std::cerr<<"\n\n.........................Debut de la partie.........................\n\n"<<std::endl;
@@ -45,7 +60,7 @@ void Jeu::lancer_jeu()
     {
         tester_fin();
         gestion_event(_event,&continuer);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         for(unsigned int i = 0; i< _humains.size(); i++)
         {
             if(_humains[i].play())
@@ -67,14 +82,21 @@ void Jeu::lancer_jeu()
             	_computers[i].gestion_piece_courante();
             	_computers[i].traitement_workspace();
 
-                            if(_computers[i].cmp()>_computers[i].speed())
-                            {
-                            	_computers[i].move();
-                            	_computers[i].setCmp(0);
-                            }
-                            _computers[i].setCmp(_computers[i].cmp()+1);
+                if(_computers[i].cmp()>_computers[i].speed())
+                {
+                    _computers[i].move();
+                    _computers[i].setCmp(0);
+                }
+                _computers[i].setCmp(_computers[i].cmp()+1);
             }
         }
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_TEXTURE_2D);
+        afficherFond();
+        glDisable(GL_TEXTURE_2D);
+        glDisable(GL_DEPTH_TEST);
+
+
         afficher();
         glFlush();
         SDL_GL_SwapBuffers();
@@ -133,8 +155,8 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer)
         break;
     }
     Uint8 *touches = SDL_GetKeyState(NULL);
-    std::cerr<<touches[humains()[0].toucheLeft()]<<" "<<SDLK_LEFT<<std::endl;
-    for(int i=0;i<humains().size();i++)
+    //std::cerr<<touches[humains()[0].toucheLeft()]<<" "<<SDLK_LEFT<<std::endl;
+    for(unsigned int i=0;i<humains().size();i++)
     {
         if(touches[humains()[i].toucheLeft()/*SDLK_LEFT*/]){
             if(humains()[i].lastLeft() == 0)

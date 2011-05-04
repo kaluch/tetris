@@ -6,9 +6,9 @@ void Humain::charger_touches(int tUp, int tDown,int tLeft,int tRight)
     setDown(tDown);
     setLeft(tLeft);
     setRight(tRight);
-    setLastUp(false);
-    setLastDown(true);
-    setLastLeft(true);
-    setLastRight(true);
+    setLastUp(true);
+    setLastDown(0);
+    setLastLeft(0);
+    setLastRight(0);
 
 }

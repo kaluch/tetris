@@ -4,6 +4,7 @@
 #include <SDL/SDL.h>
 #include <iostream>
 #include "Joueur.h"
+
 class Humain : public Joueur
 {
     public:
@@ -28,15 +29,14 @@ class Humain : public Joueur
     void setRight(int val){ _toucheRight = val;}
 
     bool lastUp(){return _lastUp;}
-    bool lastDown(){return _lastDown;}
-    bool lastLeft(){return _lastLeft;}
-    bool lastRight(){return _lastRight;}
-    void setLastUp(bool val){ _lastUp = val;
-        std::cerr<<"Mutation lastup : "<<_lastUp<<std::endl;
-    }
-    void setLastDown(bool val){ _lastDown = val;}
-    void setLastLeft(bool val){ _lastLeft = val;}
-    void setLastRight(bool val){ _lastRight = val;}
+
+    int lastDown(){return _lastDown;}
+    int lastLeft(){return _lastLeft;}
+    int lastRight(){return _lastRight;}
+    void setLastUp(bool val){ _lastUp = val;    }
+    void setLastDown(int val){ _lastDown = val;}
+    void setLastLeft(int val){ _lastLeft = val;}
+    void setLastRight(int val){ _lastRight = val;}
     protected:
 
     bool _cpu;
@@ -45,9 +45,10 @@ class Humain : public Joueur
     int _toucheLeft;
     int _toucheRight;
     bool _lastUp;
-    bool _lastDown;
-    bool _lastLeft;
-    bool _lastRight;
+
+    int _lastDown;
+    int _lastLeft;
+    int _lastRight;
     private:
 };
 

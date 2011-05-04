@@ -8,6 +8,8 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "../globale.h"
+#include "sdlglutils.h"
+
 
 class Workspace
 {
@@ -104,7 +106,6 @@ protected:
 private:
     int _nb_col;
     int _nb_lignes;
-    //Bloc **_tableau;
     std::vector< std::vector< Bloc > > _tableau;
 };
 
