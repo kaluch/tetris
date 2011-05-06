@@ -14,7 +14,7 @@ using namespace std;
 int main(int argc, char *argv[]) {
 
 	std::cerr<< "creation Jeu"<<std::endl;
-	Jeu jeu(2);
+	Jeu jeu(1);
 	std::cerr<<"\n\n............AU REVOIR............."<<std::endl;
 	return 0;
 }

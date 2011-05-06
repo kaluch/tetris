@@ -8,10 +8,10 @@ void Workspace::afficher(int x,int y)
     /*glBindTexture(GL_TEXTURE_2D,texture);
     glBegin(GL_QUADS);
     glColor3ub(255,255,255);
-    glTexCoord2d(0,1);  glVertex2d(x,y);
-    glTexCoord2d(0,0);  glVertex2d(x,y+HAUTEUR_BLOC * NB_LIGNES);
-    glTexCoord2d(1,0);  glVertex2d(x+LARGEUR_BLOC * NB_COL,y+HAUTEUR_BLOC * NB_LIGNES);
-    glTexCoord2d(1,1);  glVertex2d(x+LARGEUR_BLOC * NB_COL,y);
+    glTexCoord2d(0,1);  glVertex2d(x,y+HAUTEUR_BLOC * NB_LIGNES);
+    glTexCoord2d(0,0);  glVertex2d(x,y);
+    glTexCoord2d(1,0);  glVertex2d(x+LARGEUR_BLOC * NB_COL,y);
+    glTexCoord2d(1,1);  glVertex2d(x+LARGEUR_BLOC * NB_COL,y+HAUTEUR_BLOC * NB_LIGNES);
     glEnd();*/
 
     glBegin(GL_LINE_LOOP);

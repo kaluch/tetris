@@ -86,7 +86,7 @@ void Joueur::move()
     if(piece_courante()->downest().yws() > 0){
         piece_courante()->translateY(-20);
         setCmpSpeed(_cmpSpeed + 1);
-        if(_speed>15 && _cmpSpeed == 15){
+        if(_speed>15 && _cmpSpeed == 35){
             setCmpSpeed(0);
             setSpeed(_speed -5);
         }
