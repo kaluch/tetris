@@ -8,6 +8,7 @@
 #include "../include/Jeu.h"
 GLuint fondWs;
 GLuint fondScore;
+GLuint perdu;
 GLuint zero;
 GLuint un;
 GLuint deux;
@@ -21,26 +22,27 @@ GLuint neuf;
 GLuint fond1;
 void Jeu::init_SDL(SDL_Surface *screen)
 {
-    std::cerr << "init SDL";
+    std::cerr << "init SDL \n";
     SDL_Init(SDL_INIT_VIDEO);
     screen = SDL_SetVideoMode(LARGEUR_ECRAN, HAUTEUR_ECRAN, 32, SDL_OPENGL);
     srand(time(NULL));
     SDL_WM_SetCaption("TETRIS SOUCHET DIGNOIRE 2011", NULL);
     SDL_EnableKeyRepeat(300,50);
 
-    fondWs = loadTexture("fondWs.png");
-    std::cerr<< "fond  ws = "<<fondWs<<std::endl;
+    fondWs = loadTexture("image/fondWs.png");
+    perdu = loadTexture("image/perdu.png");
+    //std::cerr<< "fond  ws = "<<fondWs<<std::endl;
 
-    zero = loadTexture("zero.png");
-    un = loadTexture("un.png");
-    deux = loadTexture("deux.png");
-    trois = loadTexture("trois.png");
-    quatre = loadTexture("quatre.png");
-    cinq = loadTexture("cinq.png");
-    six = loadTexture("six.png");
-    sept = loadTexture("sept.png");
-    huit = loadTexture("huit.png");
-    neuf = loadTexture("neuf.png");
+    zero = loadTexture("image/zero.png");
+    un = loadTexture("image/un.png");
+    deux = loadTexture("image/deux.png");
+    trois = loadTexture("image/trois.png");
+    quatre = loadTexture("image/quatre.png");
+    cinq = loadTexture("image/cinq.png");
+    six = loadTexture("image/six.png");
+    sept = loadTexture("image/sept.png");
+    huit = loadTexture("image/huit.png");
+    neuf = loadTexture("image/neuf.png");
 
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
@@ -60,9 +62,12 @@ void Jeu::afficher()
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_TEXTURE_2D);
         afficherScore(_humains[i].id_joueur(),_humains[i].score());
+        if(_humains[i].play())
         afficherFond(19+_humains[i].id_joueur()*(100+LARGEUR_BLOC * NB_COL),20);
+        else afficherPerdu(60+_humains[i].id_joueur()*(100+LARGEUR_BLOC * NB_COL),200);
         glDisable(GL_TEXTURE_2D);
         glDisable(GL_DEPTH_TEST);
+        if(_humains[i].play())
         _humains[i].afficher();
     }
     for (unsigned int i = 0; i < _computers.size(); i++)
@@ -70,20 +75,33 @@ void Jeu::afficher()
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_TEXTURE_2D);
         afficherScore(_computers[i].id_joueur(),_computers[i].score());
+        if(_computers[i].play())
         afficherFond(19+_computers[i].id_joueur()*(100+LARGEUR_BLOC * NB_COL),20);
+        else afficherPerdu(60+_computers[i].id_joueur()*(100+LARGEUR_BLOC * NB_COL),200);
         glDisable(GL_TEXTURE_2D);
         glDisable(GL_DEPTH_TEST);
+        if(_computers[i].play())
         _computers[i].afficher();
     }
 
 
+}
+void Jeu::afficherPerdu(int x,int y){
+    glBindTexture(GL_TEXTURE_2D, perdu);
+    glBegin(GL_QUADS);
+    glColor3ub(255,255,255);
+    glTexCoord2d(0,1);  glVertex2d(x,y+128);
+    glTexCoord2d(0,0);  glVertex2d(x,y);
+    glTexCoord2d(1,0);  glVertex2d(x+128,y);
+    glTexCoord2d(1,1);  glVertex2d(x+128,y+128);
+    glEnd();
 }
 
 void Jeu::afficherFond(int x,int y)
 {
     glBindTexture(GL_TEXTURE_2D, fondWs);
     glBegin(GL_QUADS);
-    glColor3ub(255,255,255);
+    glColor3ub(45,45,45);
     glTexCoord2d(0,1);  glVertex2d(x,y+HAUTEUR_BLOC * NB_LIGNES);
     glTexCoord2d(0,0);  glVertex2d(x,y);
     glTexCoord2d(1,0);  glVertex2d(x+LARGEUR_BLOC * NB_COL,y);
@@ -93,16 +111,19 @@ void Jeu::afficherFond(int x,int y)
 
 void Jeu::afficherScore(int id,int score)
 {
-    int xu = 80+LARGEUR_BLOC * NB_COL+id*(100+LARGEUR_BLOC * NB_COL);
+    int xu = 90+LARGEUR_BLOC * NB_COL+id*(100+LARGEUR_BLOC * NB_COL);
     int yu = HAUTEUR_BLOC * NB_LIGNES/4;
     afficherChiffre(xu,yu,score%10);
-    int xd = 40+LARGEUR_BLOC * NB_COL+id*(100+LARGEUR_BLOC * NB_COL);
+    int xd = 60+LARGEUR_BLOC * NB_COL+id*(100+LARGEUR_BLOC * NB_COL);
     int yd = HAUTEUR_BLOC * NB_LIGNES/4;
     afficherChiffre(xd,yd,(score-(score%10))/10);
+    int xc = 30+LARGEUR_BLOC * NB_COL+id*(100+LARGEUR_BLOC * NB_COL);
+    int yc = HAUTEUR_BLOC * NB_LIGNES/4;
+    afficherChiffre(xc,yc,(score-(score%100))/100);
 }
-void Jeu::afficherChiffre(int x,int y,int chiffre){
+void Jeu::afficherChiffre(int x,int y,int image){
     GLuint nb;
-    switch(chiffre)
+    switch(image)
         {
         case 0:
             nb=zero;
@@ -138,16 +159,16 @@ void Jeu::afficherChiffre(int x,int y,int chiffre){
 
     glBindTexture(GL_TEXTURE_2D, nb);
     glBegin(GL_QUADS);
-    glColor3ub(255,255,255);
+    glColor3ub(255,5,5);
     //glColor3ub(0,0,0);
     glTexCoord2d(0,1);
-    glVertex2d(x,y+32);
+    glVertex2d(x,y+20);
     glTexCoord2d(0,0);
     glVertex2d(x,y);
     glTexCoord2d(1,0);
-    glVertex2d(x+32,y);
+    glVertex2d(x+20,y);
     glTexCoord2d(1,1);
-    glVertex2d(x+32,y+32);
+    glVertex2d(x+20,y+20);
     glEnd();
 
 }
@@ -196,15 +217,7 @@ void Jeu::lancer_jeu()
                 _computers[i].setCmp(_computers[i].cmp()+1);
             }
         }
-        //glEnable(GL_DEPTH_TEST);
-        //glEnable(GL_TEXTURE_2D);
-        //afficherFond();
-        //afficherScore(0);
-        //glDisable(GL_TEXTURE_2D);
-        //glDisable(GL_DEPTH_TEST);
         afficher();
-
-        //interfaceX().afficherJeu();
         glFlush();
         SDL_GL_SwapBuffers();
     }
@@ -219,9 +232,9 @@ void Jeu::tester_fin()
 {
     for(unsigned int i = 0; i< _humains.size(); i++)
     {
-        if( ! _humains[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2].vide() ||
-                ! _humains[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2 -1].vide() ||
-                ! _humains[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2 +1].vide())
+        if( ! _humains[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2].vide() ||
+                ! _humains[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 -1].vide() ||
+                ! _humains[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 +1].vide())
         {
             _humains[i].setPlay(false);
             //std::cerr<<" tester fin......... play = "<<_humains[i].play()<<std::endl;

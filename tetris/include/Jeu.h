@@ -14,9 +14,9 @@
 #include "Joueur.h"
 #include "Computer.h"
 #include "Humain.h"
+#include "Menu.h"
 #include "../globale.h"
 #include "sdlglutils.h"
-#include "Interface.h"
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -27,30 +27,33 @@
 class Jeu
 {
 public:
-    Jeu(int nb_joueurs) : _interfaceX()
+    Jeu(int nb_joueurs):_menu()
     {
         std::cerr<<"constr jeu"<<std::endl;
-        std::cerr<<"init joueurs"<<std::endl;
+
         std::ostringstream out;
 
+        init_SDL(_screen);
+        _menu.lancer_menu();
+        std::cerr<<"init joueurs"<<std::endl;
+        nb_joueurs = _menu.nb_joueur();
         for (int i = 0; i < nb_joueurs; i++){
             std::cerr<<"ajout j"<<i<<std::endl;
             _humains.push_back(Humain("j",i));
-            _interfaceX.ajouterJoueur(_humains[i]);
             std::cerr<<"joueur cree n°: "<<i<<std::endl;
         }
         std::cerr<<"ajout IA"<<nb_joueurs<<std::endl;
         _computers.push_back(Computer("j",nb_joueurs,0));
-        _interfaceX.ajouterJoueur(_computers[0]);
         std::cerr<<"Computer cree n°: "<<nb_joueurs<<std::endl;
 
         std::cerr<<"init joueurs ...........OK"<<std::endl;
-        init_SDL(_screen);
+
         lancer_jeu();
     }
 
     void init_SDL(SDL_Surface *screen);
     void afficherFond(int x,int y);
+    void afficherPerdu(int x,int y);
     void afficherScore(int id,int score);
     void afficherChiffre(int x,int y,int chiffre);
     void afficher();
@@ -63,7 +66,6 @@ public:
     std::vector<Computer> computers(){
             return _computers;
             }
-    Interface interfaceX() { return _interfaceX;}
 
 
 protected:
@@ -71,7 +73,7 @@ protected:
     SDL_Surface *_screen;
     SDL_Event _event;
     std::vector<Computer> _computers;
-    Interface _interfaceX;
+    Menu _menu;
 };
 
 #endif /* JEU_H_ */
