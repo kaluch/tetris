@@ -15,7 +15,7 @@ void Workspace::afficher(int x,int y)
     glEnd();*/
 
     glBegin(GL_LINE_LOOP);
-    glColor3ub(0,255,255);
+    glColor3ub(255,5,5);
     glVertex2d(x,y);
     glVertex2d(x,y+HAUTEUR_BLOC * NB_LIGNES);
     glVertex2d(x+LARGEUR_BLOC * NB_COL,y+HAUTEUR_BLOC * NB_LIGNES);

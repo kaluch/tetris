@@ -75,8 +75,8 @@ public:
 
     void Set_tableau(int nbLigne,int nbCol,int id)
     {
-        _tableau.resize(nbLigne+2);
-        for(int i=0; i<nbLigne+2; i++)
+        _tableau.resize(nbLigne+4);
+        for(int i=0; i<nbLigne+4; i++)
         {
             _tableau[i].resize(nbCol);
             for(int j=0; j<nbCol; j++)

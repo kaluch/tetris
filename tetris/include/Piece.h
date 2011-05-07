@@ -50,7 +50,7 @@ public:
     {
         std::cerr<<"constr piece()"<<std::endl;
         _x = 30+LARGEUR_BLOC * NB_COL/2;
-        _y = 50+HAUTEUR_BLOC * NB_LIGNES;
+        _y = 70+HAUTEUR_BLOC * NB_LIGNES;
         _rColor=0;
         _gColor=0;
         _bColor=0;
