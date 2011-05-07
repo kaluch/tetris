@@ -26,10 +26,12 @@ protected:
     int _cmp;
     int _speed;
     int _cmpSpeed;
+    int _nb_handicap;
+    int _reserveHandicap;
 
 public:
     Joueur(std::string name,int id) :_nom(name), _id_joueur(id),_score(0)
-        ,_workspace(id),_nb_next(3),_next_piece(_nb_next),_piece_courante(),_play(true),_cmp(0),_speed(80),_cmpSpeed(0)
+        ,_workspace(id),_nb_next(3),_next_piece(_nb_next),_piece_courante(),_play(true),_cmp(0),_speed(80),_cmpSpeed(0), _nb_handicap(0), _reserveHandicap(0)
     {
         std::cerr<<"creation joueur "<<name<<std::endl;
         _piece_courante = new Piece();
@@ -68,7 +70,13 @@ public:
     int nb_next()    {        return _nb_next;    }
     std::vector<Piece> next_piece(){        return _next_piece;    }
 
+    int nb_handicap(){ return _nb_handicap;}
+    void setHandicap(int val){ _nb_handicap = val;}
+    int reserveHandicap(){return _reserveHandicap;}
+    void setReserveHandicap(int val){_reserveHandicap =val;}
 
+    void ajouterHandicap();
+    void retirerHandicap();
 
     void setPlay(bool play){ _play = play;}
     bool play(){return _play;}

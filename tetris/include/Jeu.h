@@ -23,14 +23,12 @@
 #include <time.h>
 #include <typeinfo>
 #include "sdlglutils.h"
+
 class Jeu
 {
 public:
-<<<<<<< HEAD
-    Jeu(int nb_joueurs)
-=======
+
     Jeu(int nb_joueurs):_menu()
->>>>>>> effce60bf6a77c46d4998b0be388498f59bbc14e
     {
         std::cerr<<"constr jeu"<<std::endl;
 
@@ -70,16 +68,15 @@ public:
             return _computers;
             }
 
+    void lancer_handicap(int id_joueur);
+
 
 protected:
     std::vector<Humain> _humains;
     SDL_Surface *_screen;
     SDL_Event _event;
     std::vector<Computer> _computers;
-<<<<<<< HEAD
-=======
     Menu _menu;
->>>>>>> effce60bf6a77c46d4998b0be388498f59bbc14e
 };
 
 #endif /* JEU_H_ */

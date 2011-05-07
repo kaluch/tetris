@@ -201,6 +201,12 @@ void Jeu::lancer_jeu()
                 }
                 _humains[i].setCmp(_humains[i].cmp()+1);
             }
+
+            if(_humains[i].reserveHandicap() > 0){
+                std::cerr<<"handicaps a lancer par j"<<i<<std::endl;
+            	for(int j=0;j<_humains[i].reserveHandicap();j++)
+            		lancer_handicap(i);
+            }
         }
         for(unsigned int i = 0; i< _computers.size(); i++)
         {
@@ -337,3 +343,30 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer)
         }
     }
 }
+
+void Jeu::lancer_handicap(int id_joueur){
+    std::cerr<<"lancement handicap"<<std::endl;
+	int alea =rand()%(humains().size() + computers().size());
+	std::cerr<<"joueur id num "<<alea<<std::endl;
+	while(alea == id_joueur){
+		alea = rand()%(humains().size() + computers().size());
+        std::cerr<<"joueur id num "<<alea<<std::endl;
+	}
+	if(alea < humains().size()-1){
+        std::cerr<<"ajout handicap humain"<<alea<<std::endl;
+        _humains[alea].ajouterHandicap();
+
+	}
+    else{
+        std::cerr<<"ajout handicap cpu"<<alea-humains().size()<<std::endl;
+        _computers[alea-humains().size()].ajouterHandicap();
+
+
+    }
+    if(id_joueur <= humains().size())
+        _humains[id_joueur].setReserveHandicap(_humains[id_joueur].reserveHandicap() - 1);
+    else
+        _computers[id_joueur-humains().size()].setReserveHandicap(_humains[id_joueur-humains().size()].reserveHandicap() - 1);
+    std::cerr<<"Fin handicap lancé"<<std::endl;
+}
+
