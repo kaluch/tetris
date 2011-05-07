@@ -116,7 +116,7 @@ void Jeu::afficherScore(int id,int score)
     afficherChiffre(xu,yu,score%10);
     int xd = 60+LARGEUR_BLOC * NB_COL+id*(100+LARGEUR_BLOC * NB_COL);
     int yd = HAUTEUR_BLOC * NB_LIGNES/4;
-    afficherChiffre(xd,yd,(score-(score%10))/10);
+    afficherChiffre(xd,yd,((score-(score%10))/10)%10);
     int xc = 30+LARGEUR_BLOC * NB_COL+id*(100+LARGEUR_BLOC * NB_COL);
     int yc = HAUTEUR_BLOC * NB_LIGNES/4;
     afficherChiffre(xc,yc,(score-(score%100))/100);
@@ -172,10 +172,7 @@ void Jeu::afficherChiffre(int x,int y,int image){
     glEnd();
 
 }
-
-
-void Jeu::lancer_jeu()
-{
+void Jeu::lancer_jeu(){
     std::cerr<<"\n\n.........................Debut de la partie.........................\n\n"<<std::endl;
     std::cerr<<"....Nbre de joueurs = "<<_humains.size()<<std::endl;
 
@@ -227,9 +224,7 @@ void Jeu::lancer_jeu()
     }
     SDL_Quit();
 }
-
-void Jeu::tester_fin()
-{
+void Jeu::tester_fin(){
     for(unsigned int i = 0; i< _humains.size(); i++)
     {
         if( ! _humains[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2].vide() ||
@@ -242,18 +237,16 @@ void Jeu::tester_fin()
     }
     for(unsigned int i = 0; i< _computers.size(); i++)
     {
-        if( ! _computers[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2].vide() ||
-                ! _computers[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2 -1].vide() ||
-                ! _computers[i].workspace().tableau()[NB_LIGNES-4][NB_COL/2 +1].vide())
+        if( ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2].vide() ||
+                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 -1].vide() ||
+                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 +1].vide())
         {
             _computers[i].setPlay(false);
             //std::cerr<<" tester fin......... play = "<<_humains[i].play()<<std::endl;
         }
     }
 }
-
-void Jeu::gestion_event(SDL_Event event,bool *continuer)
-{
+void Jeu::gestion_event(SDL_Event event,bool *continuer){
     SDL_PollEvent(&event);
     switch (event.type)
     {

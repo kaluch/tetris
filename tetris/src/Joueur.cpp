@@ -88,7 +88,7 @@ void Joueur::move()
         setCmpSpeed(_cmpSpeed + 1);
         if(_speed>15 && _cmpSpeed == 35){
             setCmpSpeed(0);
-            setSpeed(_speed -5);
+            setSpeed(_speed -1);
         }
     }
     else
