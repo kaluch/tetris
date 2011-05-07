@@ -132,3 +132,18 @@ void Workspace::moveD(Piece *courante)
         courante->moveD();
 
 }
+
+void Workspace::ajouterHandicap(){
+
+	for(int i=nb_lignes() - 1;i> 0;i--){
+		for(int j=0;j<nb_col();j++){
+			setTableau(i,j,_tableau[i-1][j]);
+		}
+	}
+	for(int i=0;i<nb_col();i++)
+		setTableau(0,i,Bloc(i*LARGEUR_BLOC,0,255,255,255));
+}
+
+void Workspace::retirerHandicap(){
+	detruire_ligne(0);
+}

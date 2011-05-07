@@ -102,6 +102,8 @@ public:
     void tourner(Piece *courante);
     void moveG(Piece *courante);
     void moveD(Piece *courante);
+    void ajouterHandicap();
+    void retirerHandicap();
 protected:
 private:
     int _nb_col;

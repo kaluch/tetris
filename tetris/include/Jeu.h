@@ -16,17 +16,18 @@
 #include "Humain.h"
 #include "Menu.h"
 #include "../globale.h"
-#include "sdlglutils.h"
 
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <errno.h>
 #include <time.h>
 #include <typeinfo>
+#include "sdlglutils.h"
 
 class Jeu
 {
 public:
+
     Jeu(int nb_joueurs):_menu()
     {
         std::cerr<<"constr jeu"<<std::endl;
@@ -66,6 +67,8 @@ public:
     std::vector<Computer> computers(){
             return _computers;
             }
+
+    void lancer_handicap(int id_joueur);
 
 
 protected:

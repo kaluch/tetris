@@ -111,9 +111,26 @@ void Joueur::traitement_workspace()
         i++;
     }
         if(k!=0){
-        setScore(_score + k*k);
-        std::cerr<<"SCORE = "<<_score<<std::endl;
+        	setScore(_score + k*k);
+        	std::cerr<<"SCORE = "<<_score<<std::endl;
+        	if(nb_handicap() >0)
+        		retirerHandicap();
+        	else{
+        		for(int i=0;i<k;i++)
+        			setReserveHandicap(reserveHandicap() +1);
+        	}
+
         }
 }
 
+void Joueur::ajouterHandicap()
+{
+	setHandicap(nb_handicap() + 1);
+	_workspace.ajouterHandicap();
+}
 
+void Joueur::retirerHandicap()
+{
+	setHandicap(nb_handicap() - 1);
+	_workspace.retirerHandicap();
+}
