@@ -162,7 +162,7 @@ void Workspace::ajouterHandicap(int id,int nbHandi)
         }
     }
 
-    for(int i=0; i<(nb_col()-1)/2; i++)
+    for(int i=0; i<(nb_col())/2; i++)
     {
         int a=nbHandi%2;
         if(a==0){
