@@ -100,41 +100,10 @@ void Computer::simtourner(Piece *courante,int ymin)
 {
 
 
-    /*int count=0;
-    bool move = true;
-    Piece piece_sim(courante->id_piece(),courante->id_rot(),courante->x(),ymin+2);
-
-    while(piece_sim.downest().yws()>ymin && count <4){
-        piece_sim.tourner();
-        for(int i=0; i<4; i++)
-        {
-            if(! _workspace.tableau()[piece_sim.blocs()[i].yws()][piece_sim.blocs()[i].xws()].vide())
-            move=false;
-        }
-        count++;
-    }
-    for(int i=0;i<count;i++){
-    if(move){
-        for(int i=0; i<4; i++)
-        {
-            if(! _workspace.tableau()[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide())
-            move=false;
-        }
-    }
-    if(move)
-    courante->tourner();}*/
-
 
     bool move = true;
-    //Piece piece_sim(courante->id_piece(),courante->id_rot(),courante->x(),ymin);
     Piece piece_sim2(courante->id_piece(),courante->id_rot(),courante->x(),courante->y());
-
-    //piece_sim.tourner();
     piece_sim2.tourner();
-
-    //if(piece_sim.leftest().xws() <0 || piece_sim.rightest().xws()>10)
-      //  move = false;
-    if(piece_sim2.leftest().xws() <0 || piece_sim2.rightest().xws()>10)
         move = false;
     if(move){
         int y=courante->downest().yws();
@@ -142,8 +111,7 @@ void Computer::simtourner(Piece *courante,int ymin)
 
     for(int i=0; i<4; i++)
     {
-        if(//!  _workspace.tableau()[ymin][courante->blocs()[i].xws()].vide() ||
-            ! _workspace.tableau()[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide() ||
+        if(! _workspace.tableau()[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide() ||
              courante->blocs()[i].yws()== NB_LIGNES-1 ||
             courante->downest().yws()<1 ||
              ! courante->downest().yws()< y )

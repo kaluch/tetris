@@ -40,9 +40,6 @@ public:
         init_next_piece();
         std::cerr<<"fin creation "<< std::endl;
     }
-//    ~Joueur(){
-//        delete(_piece_courante);
-//    }
     void init_next_piece();
     void init_next();
     void changer_pieces();
@@ -54,6 +51,7 @@ public:
     void ajouterHandicap();
     void retirerHandicap();
 
+    //ACCESSEURS
     std::string nom() const{return _nom;}
     Piece* piece_courante(){return _piece_courante;   }
     Piece next_p()    {return _next_piece[0];}
@@ -75,6 +73,7 @@ public:
     void setReserveHandicap(int val){_reserveHandicap =val;}
     void setPlay(bool play){ _play = play;}
     bool play(){return _play;}
+
 
 };
 

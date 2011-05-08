@@ -217,7 +217,6 @@ void Menu::afficherChiffre(int image,int x,int y){
     glBindTexture(GL_TEXTURE_2D, nb);
     glBegin(GL_QUADS);
     glColor3ub(255,255,255);
-    //glColor3ub(0,0,0);
     glTexCoord2d(0,1);
     glVertex2d(x,y+32);
     glTexCoord2d(0,0);

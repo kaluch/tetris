@@ -67,6 +67,11 @@ public:
     void lancer_jeu();
     void tester_fin();
     void gestion_event(SDL_Event event, bool *continuer);
+
+
+    void lancer_handicap(int id_joueur);
+
+    //ACCESSEURS
     std::vector<Humain> humains()
     {
         return _humains;
@@ -75,9 +80,6 @@ public:
     {
         return _computers;
     }
-
-    void lancer_handicap(int id_joueur);
-
 
 protected:
     std::vector<Humain> _humains;

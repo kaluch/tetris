@@ -6,9 +6,7 @@ void Piece::afficher()
 {
     for(int i=0; i<4; i++)
     {
-        //std::cerr<<"Affichage bloc "<<i;
         blocs()[i].afficher();
-        //std::cerr<<".........OK"<<std::endl;
     }
 }
 
@@ -48,7 +46,6 @@ Bloc Piece::rightest()
 void Piece::descendre()
     {
         if(downest().yws()>0){
-            //std::cerr<<"yws = ............"<<downest().yws()<<std::endl;
             translateY(-20);
         }
 
@@ -56,32 +53,22 @@ void Piece::descendre()
     void Piece::moveG()
     {
         if(leftest().xws()>0){
-            //std::cerr<<"xws = ............"<<leftest().xws()<<std::endl;
             translateX(-20);
         }
     }
     void Piece::moveD()
     {
         if(rightest().xws()<9){
-            //std::cerr<<"xws = ............"<<rightest().xws()<<std::endl;
         translateX(20);
         }
     }
 void Piece::translateX(int val)
 {
-    //std::cerr<<"translateX"<<std::endl;
     setX(x()+val);
-    /*for(int i=0;i<blocs().size();i++){
-            _blocs[i].setX(val+_blocs[i].x());
-        }*/
 }
 void Piece::translateY(int val)
 {
-    //std::cerr<<"translateY"<<std::endl;
     setY(y()+val);
-    /*for(int i=0;i<blocs().size();i++){
-            _blocs[i].setY(_blocs[i].y()+val);
-        }*/
 }
 
 void Piece::tourner()
@@ -123,7 +110,6 @@ void Piece::changerPiece(int id_piece,int id_rot,int r, int g, int b)
                 {
                     int x = (i-2)*LARGEUR_BLOC + _x;
                     int y = (j-2)*HAUTEUR_BLOC + _y;
-                    //std::cerr<<"changer piece x "<<x<<" y "<<y<<std::endl;
                     _blocs.push_back(Bloc(x,y,rColor(),gColor(),bColor()));
                 }
             }

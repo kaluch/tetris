@@ -26,9 +26,7 @@ void Workspace::afficher_tableau()
 
 void Workspace::switch_piece(Piece *next)
 {
-    //std::cerr<<"Switch_piece.........x = "<<next->x()<<" y = "<<next->y()<<std::endl;
     next->translateX(-150);
-    //std::cerr<<".........x = "<<next->x()<<" y = "<<next->y()<<std::endl;
 }
 
 
@@ -88,7 +86,6 @@ void Workspace::tourner(Piece *courante)
 
 void Workspace::descendre(Piece *courante)
 {
-    //if(courante->y()> 40)
     courante->descendre();
 }
 

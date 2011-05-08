@@ -48,7 +48,6 @@ public:
     }
     Piece()
     {
-        //std::cerr<<"constr piece()"<<std::endl;
         _x = 30+LARGEUR_BLOC * NB_COL/2;
         _y = 70+HAUTEUR_BLOC * NB_LIGNES;
         _rColor=0;
@@ -94,7 +93,7 @@ public:
     void moveD();
 
 
-    /*-------GETTERS-----------*/
+    /*-------ACCESSEURS----------*/
     int id_piece()
     {
         return _id_piece;

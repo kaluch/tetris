@@ -25,27 +25,8 @@ public:
         Set_tableau(NB_LIGNES,NB_COL,id);
         //_tableau[NB_COL][NB_LIGNES];        std::cerr<<"...........OK"<<std::endl;
     }
-    Workspace(){}
-    ~Workspace()
-    {
-        //free_tableau();
-    }
-    int nb_col()
-    {
-        return _nb_col;
-    }
-    void Set_nb_col(const int& val)
-    {
-        _nb_col = val;
-    }
-    int nb_lignes()
-    {
-        return _nb_lignes;
-    }
-    void Set_nb_lignes(const int& val)
-    {
-        _nb_lignes = val;
-    }
+
+
 
     void setTableau(int i,int j,Bloc bloc){
         _tableau[i][j]= bloc;
@@ -64,10 +45,7 @@ public:
         }
     }
 
-    std::vector<std::vector< Bloc > > tableau()
-    {
-        return _tableau;
-    }
+
 
     void afficher(int x,int y);
     void afficher_tableau();
@@ -82,6 +60,28 @@ public:
     void moveD(Piece *courante);
     void ajouterHandicap(int id,int nbHandi);
     void retirerHandicap();
+
+    //ACCESSEURS
+    std::vector<std::vector< Bloc > > tableau()
+    {
+        return _tableau;
+    }
+     int nb_col()
+    {
+        return _nb_col;
+    }
+    void Set_nb_col(const int& val)
+    {
+        _nb_col = val;
+    }
+    int nb_lignes()
+    {
+        return _nb_lignes;
+    }
+    void Set_nb_lignes(const int& val)
+    {
+        _nb_lignes = val;
+    }
 protected:
 private:
     int _nb_col;

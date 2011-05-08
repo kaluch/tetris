@@ -19,6 +19,8 @@ class Humain : public Joueur
         }
 
     void charger_touches(int tUP, int tDown,int tLeft,int tRight);
+
+    //ACCESSEURS
     int toucheUp(){ return _toucheUp;}
     int toucheDown(){ return _toucheDown;}
     int toucheLeft(){ return _toucheLeft;}

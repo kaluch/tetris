@@ -31,7 +31,6 @@ void Jeu::init_SDL(SDL_Surface *screen)
 
     fondWs = loadTexture("image/fond_ws.png");
     perdu = loadTexture("image/perdu.png");
-    //std::cerr<< "fond  ws = "<<fondWs<<std::endl;
 
     zero = loadTexture("image/zero.png");
     un = loadTexture("image/un.png");
@@ -160,7 +159,6 @@ void Jeu::afficherChiffre(int x,int y,int image){
     glBindTexture(GL_TEXTURE_2D, nb);
     glBegin(GL_QUADS);
     glColor3ub(155,155,155);
-    //glColor3ub(0,0,0);
     glTexCoord2d(0,1);
     glVertex2d(x,y+20);
     glTexCoord2d(0,0);
@@ -243,7 +241,6 @@ void Jeu::tester_fin(){
                 ! _humains[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 +1].vide())
         {
             _humains[i].setPlay(false);
-            //std::cerr<<" tester fin......... play = "<<_humains[i].play()<<std::endl;
         }
     }
     for(unsigned int i = 0; i< _computers.size(); i++)
@@ -258,7 +255,6 @@ void Jeu::tester_fin(){
            )
         {
             _computers[i].setPlay(false);
-            //std::cerr<<" tester fin......... play = "<<_humains[i].play()<<std::endl;
         }
     }
 }
@@ -284,7 +280,6 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer){
         break;
     }
     Uint8 *touches = SDL_GetKeyState(NULL);
-    //std::cerr<<touches[humains()[0].toucheLeft()]<<" "<<SDLK_LEFT<<std::endl;
     for(unsigned int i=0; i<humains().size(); i++)
     {
         if(touches[humains()[i].toucheLeft()/*SDLK_LEFT*/])
@@ -293,56 +288,48 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer){
             {
                 _humains[i].workspace().moveG(humains()[i].piece_courante());
                 _humains[i].setLastLeft(TEMPO);
-                //std::cerr<<"Tourner "<<humains()[i].lastLeft()<<std::endl;
             }
             else
             {
                 _humains[i].setLastLeft(_humains[i].lastLeft() - 1);
-                //std::cerr<<"pas tourner "<<humains()[i].lastLeft()<<std::endl;
             }
         }
-        if(touches[humains()[i].toucheRight()/*SDLK_LEFT*/])
+        if(touches[humains()[i].toucheRight()])
         {
             if(humains()[i].lastRight() == 0)
             {
                 _humains[i].workspace().moveD(humains()[i].piece_courante());
                 _humains[i].setLastRight(TEMPO);
-                //std::cerr<<"Tourner "<<humains()[i].lastLeft()<<std::endl;
             }
             else
             {
                 _humains[i].setLastRight(_humains[i].lastRight() - 1);
-                //std::cerr<<"pas tourner "<<humains()[i].lastLeft()<<std::endl;
             }
         }
-        if(touches[humains()[i].toucheDown()/*SDLK_LEFT*/])
+        if(touches[humains()[i].toucheDown()])
         {
             if(humains()[i].lastDown() == 0)
             {
                 _humains[i].workspace().descendre(humains()[i].piece_courante());
                 _humains[i].setLastDown(TEMPO_BAS);
-                //std::cerr<<"Tourner "<<humains()[i].lastLeft()<<std::endl;
             }
             else
             {
                 _humains[i].setLastDown(_humains[i].lastDown() - 1);
-                //std::cerr<<"pas tourner "<<humains()[i].lastLeft()<<std::endl;
             }
         }
-        if(touches[humains()[i].toucheUp()/*SDLK_LEFT*/])
+        if(touches[humains()[i].toucheUp()])
         {
             if(humains()[i].lastUp())
             {
                 _humains[i].workspace().tourner(humains()[i].piece_courante());
                 _humains[i].setLastUp(false);
-                //std::cerr<<"Tourner "<<humains()[i].lastLeft()<<std::endl;
             }
 
         }
         else
         {
             _humains[i].setLastUp(true);
-            //std::cerr<<"pas tourner "<<humains()[i].lastLeft()<<std::endl;
         }
     }
 }
