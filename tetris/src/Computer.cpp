@@ -71,16 +71,17 @@ void Computer::intelligent()
         }
         ymin =NB_LIGNES;
     }
-    while(_piece_courante->downest().xws()>xMin && _piece_courante->leftest().xws()>0)
+    while(_piece_courante->downest().xws()>xMin && _piece_courante->leftest().xws()>0 && _piece_courante->leftest().yws()<NB_LIGNES-1)
     {
         _workspace.moveG(_piece_courante);
     }
-    while(_piece_courante->downest().xws()<xMin && _piece_courante->rightest().xws()<NB_COL-1)
+    while(_piece_courante->downest().xws()<xMin && _piece_courante->rightest().xws()<NB_COL-1 && _piece_courante->rightest().yws()<NB_LIGNES-1)
     {
         _workspace.moveD(_piece_courante);
     }
+    if(_piece_courante->downest().yws()<NB_LIGNES-4)
+    simtourner(_piece_courante,yMin);
 
-    //while(piece_courante()->downest().yws() > 0){piece_courante()->descendre();}
     if(piece_courante()->downest().yws() > 0)
     {
         piece_courante()->descendre();
@@ -93,4 +94,59 @@ void Computer::intelligent()
     }
     else
         poser_piece();
+}
+
+void Computer::simtourner(Piece *courante,int ymin)
+{
+
+
+    /*int count=0;
+    bool move = true;
+    Piece piece_sim(courante->id_piece(),courante->id_rot(),courante->x(),ymin+2);
+
+    while(piece_sim.downest().yws()>ymin && count <4){
+        piece_sim.tourner();
+        for(int i=0; i<4; i++)
+        {
+            if(! _workspace.tableau()[piece_sim.blocs()[i].yws()][piece_sim.blocs()[i].xws()].vide())
+            move=false;
+        }
+        count++;
+    }
+    for(int i=0;i<count;i++){
+    if(move){
+        for(int i=0; i<4; i++)
+        {
+            if(! _workspace.tableau()[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide())
+            move=false;
+        }
+    }
+    if(move)
+    courante->tourner();}*/
+
+
+    bool move = true;
+    //Piece piece_sim(courante->id_piece(),courante->id_rot(),courante->x(),ymin);
+    Piece piece_sim2(courante->id_piece(),courante->id_rot(),courante->x(),courante->y());
+
+    //piece_sim.tourner();
+    piece_sim2.tourner();
+
+    //if(piece_sim.leftest().xws() <0 || piece_sim.rightest().xws()>10)
+      //  move = false;
+    if(piece_sim2.leftest().xws() <0 || piece_sim2.rightest().xws()>10)
+        move = false;
+    if(move){
+        int y=courante->downest().yws();
+        courante->tourner();
+
+    for(int i=0; i<4; i++)
+    {
+        if(//!  _workspace.tableau()[ymin][courante->blocs()[i].xws()].vide() ||
+            ! _workspace.tableau()[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide() ||
+             courante->blocs()[i].yws()== NB_LIGNES-1 ||
+            courante->downest().yws()<1 ||
+             ! courante->downest().yws()< y )
+            courante->detourner();
+    }}
 }

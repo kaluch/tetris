@@ -23,14 +23,14 @@
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>11</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>572</x>
+      <x>390</x>
       <y>0</y>
-      <w>374</w>
-      <h>297</h>
+      <w>175</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>Jeu
 --
@@ -55,10 +55,10 @@ gestion_event(event:SDL_Event,*continuer:bool):void</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1210</x>
-      <y>22</y>
-      <w>330</w>
-      <h>462</h>
+      <x>680</x>
+      <y>10</y>
+      <w>140</w>
+      <h>215</h>
     </coordinates>
     <panel_attributes>Joueur
 --
@@ -92,10 +92,10 @@ retirerHandicap():void</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>660</x>
-      <y>396</y>
-      <w>275</w>
-      <h>363</h>
+      <x>430</x>
+      <y>180</y>
+      <w>130</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Workspace
 --
@@ -123,10 +123,10 @@ retirerHandicap():void</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>759</x>
-      <y>847</y>
-      <w>242</w>
-      <h>253</h>
+      <x>475</x>
+      <y>385</y>
+      <w>110</w>
+      <h>115</h>
     </coordinates>
     <panel_attributes>Bloc
 --
@@ -148,23 +148,23 @@ afficher():void</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>440</x>
-      <y>308</y>
-      <w>791</w>
-      <h>197</h>
+      <x>340</x>
+      <y>140</y>
+      <w>349</w>
+      <h>89</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=4</panel_attributes>
-    <additional_attributes>770;33;132;33;132;176;33;176</additional_attributes>
+    <additional_attributes>340;15;50;15;50;80;15;80</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1034</x>
-      <y>561</y>
-      <w>396</w>
-      <h>264</h>
+      <x>600</x>
+      <y>255</y>
+      <w>185</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Humain
 --
@@ -186,10 +186,10 @@ charger_touches(tUp:int,tDown:int,tLeft:int,tRight:int):void</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1353</x>
-      <y>836</y>
-      <w>264</w>
-      <h>132</h>
+      <x>735</x>
+      <y>405</y>
+      <w>135</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>Computer
 --
@@ -198,16 +198,17 @@ _ia:int
 Computer(name:std::string,id:int,ia:int)
 move():void
 idiot():void
-intelligent():void</panel_attributes>
+intelligent():void
+simtourner(*courante:Piece,ymin:int):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>121</x>
-      <y>88</y>
-      <w>374</w>
-      <h>198</h>
+      <x>185</x>
+      <y>40</y>
+      <w>175</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>Menu
 --
@@ -226,32 +227,32 @@ lancer_menu():void</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1177</x>
-      <y>451</y>
-      <w>54</w>
-      <h>131</h>
+      <x>665</x>
+      <y>210</y>
+      <w>24</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>33;33;33;110</additional_attributes>
+    <additional_attributes>15;15;15;45</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1474</x>
-      <y>451</y>
-      <w>54</w>
-      <h>406</h>
+      <x>800</x>
+      <y>210</y>
+      <w>24</w>
+      <h>204</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>33;33;33;385</additional_attributes>
+    <additional_attributes>15;15;15;195</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>99</x>
-      <y>352</y>
-      <w>374</w>
-      <h>473</h>
+      <x>175</x>
+      <y>160</y>
+      <w>180</w>
+      <h>215</h>
     </coordinates>
     <panel_attributes>Piece
 --
@@ -285,66 +286,66 @@ moveD():void</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>913</x>
-      <y>99</y>
-      <w>142</w>
-      <h>483</h>
+      <x>550</x>
+      <y>45</y>
+      <w>59</w>
+      <h>219</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=n</panel_attributes>
-    <additional_attributes>33;33;121;33;121;77;121;462</additional_attributes>
+    <additional_attributes>15;15;50;15;50;35;50;210</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>902</x>
-      <y>363</y>
-      <w>329</w>
-      <h>109</h>
+      <x>545</x>
+      <y>165</y>
+      <w>144</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>308;33;198;33;198;88;33;88</additional_attributes>
+    <additional_attributes>135;15;85;15;85;40;15;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>440</x>
-      <y>759</y>
-      <w>340</w>
-      <h>164</h>
+      <x>340</x>
+      <y>345</y>
+      <w>144</w>
+      <h>74</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=4</panel_attributes>
-    <additional_attributes>33;33;154;33;154;143;319;143</additional_attributes>
+    <additional_attributes>15;15;60;15;60;65;135;65</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>462</x>
-      <y>132</y>
-      <w>131</w>
-      <h>54</h>
+      <x>345</x>
+      <y>60</y>
+      <w>54</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>110;33;33;33</additional_attributes>
+    <additional_attributes>45;15;15;15</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>913</x>
-      <y>187</y>
-      <w>571</w>
-      <h>670</h>
+      <x>550</x>
+      <y>85</y>
+      <w>254</w>
+      <h>329</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>33;33;77;33;77;352;550;352;550;649</additional_attributes>
+    <additional_attributes>15;15;30;15;30;160;245;160;245;320</additional_attributes>
   </element>
 </diagram>
