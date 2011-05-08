@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><umlet_diagram><help_text>// Uncomment the following line to change the fontsize:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.1">
+  <help_text>// Uncomment the following line to change the fontsize:
 // fontsize=14
 
 
@@ -20,44 +22,329 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// This text will be stored with each diagram;  use it for notes.</help_text><zoom_level>10</zoom_level><element><type>com.umlet.element.base.Class</type><coordinates><x>400</x><y>60</y><w>200</w><h>70</h></coordinates><panel_attributes>Jeu
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>11</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>572</x>
+      <y>0</y>
+      <w>374</w>
+      <h>297</h>
+    </coordinates>
+    <panel_attributes>Jeu
 --
-joueurs:ArrayList&lt;Joueur&gt;
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>350</x><y>180</y><w>300</w><h>240</h></coordinates><panel_attributes>Joueur
+_humains:vector&lt;Humain&gt;
+_computers:vector&lt;Computer&gt;
+*_screen:SDL_Surface
+_event:SDL_Event
+_menu:Menu
 --
-nom:String
-next:ArrayList&lt;Piece&gt;
-pile:Workspace
-lWorkspace:int
-cWorkspace:int
-workspace:int[lWorkspace][cWorkspace]
+Jeu(nb_joueur:int)
+init_SDL(*screen:SDL_Surface):void
+afficherFond(x:int,y:int):void
+afficherPerdu(x:int,y:int):void
+afficherScore(id:int,score:int):void
+afficherChiffre(x:int,y:int,chiffre:int):void
+afficher():void
+lancer_jeu():void
+tester_fin():void
+gestion_event(event:SDL_Event,*continuer:bool):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1210</x>
+      <y>22</y>
+      <w>330</w>
+      <h>462</h>
+    </coordinates>
+    <panel_attributes>Joueur
+--
+nom:string
+id_joueur:int
 score:int
-comp:Comportement
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>430</x><y>480</y><w>220</w><h>100</h></coordinates><panel_attributes>Piece
+next:vector&lt;Piece&gt;
+workspace:Workspace
+nb_next:int
+*piece_courante:Piece
+play:bool
+cmp:int
+speed:int
+cmpspeed:int
+nb_handicap:int
+reserveHandicap:int
 --
-blocs:Bloc[8][8]
-couleur:int
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>710</x><y>290</y><w>220</w><h>100</h></coordinates><panel_attributes>Workspace
+Joueur(name:std::string,id:int)
+init_next_piece():void
+init_next():void
+changer_pieces():void   
+afficher():void
+gestion_piece_courante():void
+poser_piece():void
+move():void
+traitement_workspace():void
+ajouterHandicap():void
+retirerHandicap():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>660</x>
+      <y>396</y>
+      <w>275</w>
+      <h>363</h>
+    </coordinates>
+    <panel_attributes>Workspace
 --
 nbLigne:int
 nbColonne:int
-cases:Bloc[nbLigne][nbCol]
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>740</x><y>470</y><w>220</w><h>100</h></coordinates><panel_attributes>Bloc
+tableau:std::vector&lt;std::vector&lt;Bloc&gt;&gt;
 --
-couleur:int
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>470</x><y>100</y><w>52</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+Workspace()
+Workspace(id:int)
+afficher(x:int,y:int):void
+afficher_tableau():void
+switch_piece(*next:Piece):void
+ajouter_piece(*courante:Piece):void
+afficher_tab_nonvide():void
+compte_ligne(ligne:int):int
+detruire_ligne(ligne:int):void
+descendre(*courante:Piece):void
+tourner(*courante:Piece):void
+moveG(*courante:Piece):void
+moveD(*courante:Piece):void
+ajouterHandicap(id:int,nbHandi:int):void
+retirerHandicap():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>759</x>
+      <y>847</y>
+      <w>242</w>
+      <h>253</h>
+    </coordinates>
+    <panel_attributes>Bloc
+--
+_x:int
+_y:int
+_xws:int
+_yws:int
+_rColor:int
+_gColor:int
+_bColor:int
+_vide:bool
+--
+Bloc()
+Bloc(x:int,y:int,r:int,g:int;b:int)
+Bloc(x:int,y:int,vide:bool)
+afficher():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>440</x>
+      <y>308</y>
+      <w>791</w>
+      <h>197</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1...n</panel_attributes><additional_attributes>30;30;30;80</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>30</x><y>220</y><w>170</w><h>80</h></coordinates><panel_attributes>/Comportement/
+m2=4</panel_attributes>
+    <additional_attributes>770;33;132;33;132;176;33;176</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1034</x>
+      <y>561</y>
+      <w>396</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>Humain
 --
-
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>30</x><y>370</y><w>80</w><h>80</h></coordinates><panel_attributes>CPU
+_cpu:bool
+_toucheUp:int
+_toucheDown:int
+_toucheLeft:int
+_toucheRight:int
+_lastUp:bool
+_lastDown:int
+_lastLeft:int
+_lastRight:int
+_cmp:int
 --
-
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>170</x><y>370</y><w>80</w><h>80</h></coordinates><panel_attributes>Player
+Humain(name:std::string,id:int)
+charger_touches(tUp:int,tDown:int,tLeft:int,tRight:int):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1353</x>
+      <y>836</y>
+      <w>264</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Computer
 --
-
---</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>170</x><y>230</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+_ia:int
+--
+Computer(name:std::string,id:int,ia:int)
+move():void
+idiot():void
+intelligent():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>121</x>
+      <y>88</y>
+      <w>374</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>Menu
+--
+_event:SDL_Event
+_nb_joueur:int
+--
+Menu()
+void afficher():void
+afficherEntree():void
+afficherNbjoueur():void
+afficherChiffre(chiffre:int,x:int,y:int):void
+gestion_event(event:SDL_Event,*continuer:bool):void
+lancer_menu():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1177</x>
+      <y>451</y>
+      <w>54</w>
+      <h>131</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>33;33;33;110</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1474</x>
+      <y>451</y>
+      <w>54</w>
+      <h>406</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>33;33;33;385</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>99</x>
+      <y>352</y>
+      <w>374</w>
+      <h>473</h>
+    </coordinates>
+    <panel_attributes>Piece
+--
+_id_piece:int
+_id_rot:int
+_x:int
+_y:int
+_rColor:int
+_gColor:int
+_bColor:int
+_blocs:std::vector&lt;Bloc&gt; 
+--
+Piece(id:int,rot:int,x:int,y:int)
+Piece()
+afficher():void
+tourner():void
+detourner():void
+charger_blocs(id_piece:int,id_rot:int):void
+changerPiece(id_piece:int,id_rot:int,r:int,g:int,b:int):void
+translateX(val:int):void
+translateY(val:int):void
+downest():Bloc
+leftest():Bloc
+rightest():Bloc
+colorBlocs(int alea):void
+descendre():void
+moveG():void
+moveD():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>913</x>
+      <y>99</y>
+      <w>142</w>
+      <h>483</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1</panel_attributes><additional_attributes>180;30;30;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>150</x><y>270</y><w>50</w><h>120</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>30;30;30;100</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>50</x><y>270</y><w>50</w><h>120</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>30;30;30;100</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>410</x><y>390</y><w>50</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=n</panel_attributes>
+    <additional_attributes>33;33;121;33;121;77;121;462</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>902</x>
+      <y>363</y>
+      <w>329</w>
+      <h>109</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1</panel_attributes><additional_attributes>30;30;30;90</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>620</x><y>330</y><w>110</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>30;30;90;30</additional_attributes></element></umlet_diagram>
+m2=1</panel_attributes>
+    <additional_attributes>308;33;198;33;198;88;33;88</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>440</x>
+      <y>759</y>
+      <w>340</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=4</panel_attributes>
+    <additional_attributes>33;33;154;33;154;143;319;143</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>462</x>
+      <y>132</y>
+      <w>131</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>110;33;33;33</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>913</x>
+      <y>187</y>
+      <w>571</w>
+      <h>670</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>33;33;77;33;77;352;550;352;550;649</additional_attributes>
+  </element>
+</diagram>

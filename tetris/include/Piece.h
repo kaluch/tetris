@@ -89,29 +89,9 @@ public:
     Bloc leftest();
     Bloc rightest();
     void colorBlocs(int alea);
-
-    void descendre()
-    {
-        if(downest().yws()>0){
-            //std::cerr<<"yws = ............"<<downest().yws()<<std::endl;
-            translateY(-20);
-        }
-
-    }
-    void moveG()
-    {
-        if(leftest().xws()>0){
-            //std::cerr<<"xws = ............"<<leftest().xws()<<std::endl;
-            translateX(-20);
-        }
-    }
-    void moveD()
-    {
-        if(rightest().xws()<9){
-            //std::cerr<<"xws = ............"<<rightest().xws()<<std::endl;
-        translateX(20);
-        }
-    }
+    void descendre();
+    void moveG();
+    void moveD();
 
 
     /*-------GETTERS-----------*/

@@ -39,21 +39,21 @@ public:
 
         init_next_piece();
         std::cerr<<"fin creation "<< std::endl;
-        //_workspace.s
-
     }
 //    ~Joueur(){
 //        delete(_piece_courante);
 //    }
-            void init_next_piece();
+    void init_next_piece();
     void init_next();
-    void sleep(unsigned int mseconds);
     void changer_pieces();
     void afficher();
-     void gestion_piece_courante();
+    void gestion_piece_courante();
     void poser_piece();
     void move();
     void traitement_workspace();
+    void ajouterHandicap();
+    void retirerHandicap();
+
     std::string nom() const{return _nom;}
     Piece* piece_courante(){return _piece_courante;   }
     Piece next_p()    {return _next_piece[0];}
@@ -68,16 +68,11 @@ public:
     void setCmpSpeed(int val)    {       _cmpSpeed = val;    }
     int id_joueur()    {        return _id_joueur;    }
     int nb_next()    {        return _nb_next;    }
-    std::vector<Piece> next_piece(){        return _next_piece;    }
-
+    std::vector<Piece> next_piece(){return _next_piece;}
     int nb_handicap(){ return _nb_handicap;}
     void setHandicap(int val){ _nb_handicap = val;}
     int reserveHandicap(){return _reserveHandicap;}
     void setReserveHandicap(int val){_reserveHandicap =val;}
-
-    void ajouterHandicap();
-    void retirerHandicap();
-
     void setPlay(bool play){ _play = play;}
     bool play(){return _play;}
 

@@ -45,7 +45,28 @@ Bloc Piece::rightest()
     }
     return max;
 }
+void Piece::descendre()
+    {
+        if(downest().yws()>0){
+            //std::cerr<<"yws = ............"<<downest().yws()<<std::endl;
+            translateY(-20);
+        }
 
+    }
+    void Piece::moveG()
+    {
+        if(leftest().xws()>0){
+            //std::cerr<<"xws = ............"<<leftest().xws()<<std::endl;
+            translateX(-20);
+        }
+    }
+    void Piece::moveD()
+    {
+        if(rightest().xws()<9){
+            //std::cerr<<"xws = ............"<<rightest().xws()<<std::endl;
+        translateX(20);
+        }
+    }
 void Piece::translateX(int val)
 {
     //std::cerr<<"translateX"<<std::endl;

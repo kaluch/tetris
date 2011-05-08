@@ -37,15 +37,14 @@ class Humain : public Joueur
     void setLastDown(int val){ _lastDown = val;}
     void setLastLeft(int val){ _lastLeft = val;}
     void setLastRight(int val){ _lastRight = val;}
-    protected:
 
+    protected:
     bool _cpu;
     int _toucheUp;
     int _toucheDown;
     int _toucheLeft;
     int _toucheRight;
     bool _lastUp;
-
     int _lastDown;
     int _lastLeft;
     int _lastRight;
