@@ -200,7 +200,7 @@ void Jeu::lancer_jeu(){
             }
 
             if(_humains[i].reserveHandicap() > 0){
-                std::cerr<<"handicaps a lancer par j"<<i<<std::endl;
+                std::cerr<<_humains.reserveHandicap<<" handicaps a lancer par j"<<i<<std::endl;
             	for(int j=0;j<_humains[i].reserveHandicap();j++)
             		lancer_handicap(i);
             }
@@ -338,14 +338,14 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer){
 }
 
 void Jeu::lancer_handicap(int id_joueur){
-    std::cerr<<"lancement handicap"<<std::endl;
+    std::cerr<<"lancement handicap de "<<id_joueur<<std::endl;
 	int alea =rand()%(humains().size() + computers().size());
-	std::cerr<<"joueur id num "<<alea<<std::endl;
+	std::cerr<<"joueur id num "<<alea<<" avec j= "<<humains().size()<<std::endl;
 	while(alea == id_joueur){
 		alea = rand()%(humains().size() + computers().size());
         std::cerr<<"joueur id num "<<alea<<std::endl;
 	}
-	if(alea < humains().size()-1){
+	if(alea <= humains().size()-1){
         std::cerr<<"ajout handicap humain"<<alea<<std::endl;
         _humains[alea].ajouterHandicap();
 
