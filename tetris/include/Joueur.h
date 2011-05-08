@@ -31,7 +31,7 @@ protected:
 
 public:
     Joueur(std::string name,int id) :_nom(name), _id_joueur(id),_score(0)
-        ,_workspace(id),_nb_next(3),_next_piece(_nb_next),_piece_courante(),_play(true),_cmp(0),_speed(80),_cmpSpeed(0), _nb_handicap(0), _reserveHandicap(0)
+        ,_workspace(id),_nb_next(3),_next_piece(_nb_next),_piece_courante(),_play(true),_cmp(80),_speed(80),_cmpSpeed(0), _nb_handicap(0), _reserveHandicap(0)
     {
         std::cerr<<"creation joueur "<<name<<std::endl;
         _piece_courante = new Piece();

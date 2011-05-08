@@ -17,9 +17,7 @@
 class Bloc {
 public:
     Bloc(){}
-	Bloc(int x,int y,int r,int g,int b) : _x(x), _y(y), _yws((y-20)/20), _rColor(r), _gColor(g), _bColor(b){
-	    //std::cerr<<"constr bloc "<<x<<" "<<y<<" "<<r<<" "<<g<<" "<<b;
-        //std::cerr<<"x = "<<_x<<std::endl;
+	Bloc(int x,int y,int r,int g,int b) : _x(x), _y(y), _yws((y-20)/20), _rColor(r), _gColor(g), _bColor(b), _vide(false){
         int id=(x-20)/(100+LARGEUR_BLOC*NB_COL);
 	    if(x<=20 )
             _xws= -1;
@@ -27,8 +25,10 @@ public:
             _xws=(x-20-id*(100+LARGEUR_BLOC * NB_COL))/LARGEUR_BLOC;
         else if(x<=20+(id+1)*(100+LARGEUR_BLOC * NB_COL))
             _xws= -1;
+        else _xws=0;
 	}
-	Bloc(int x,int y,bool boolean) : _x(x), _y(y), _xws((x-20)/20), _yws((y-20)/20), _rColor(125), _gColor(0), _bColor(0), _vide(true){}
+
+	Bloc(int x,int y,bool vide) : _x(x), _y(y), _xws((x-20)/20), _yws((y-20)/20), _rColor(125), _gColor(0), _bColor(0), _vide(vide){}
 	~Bloc(){}
 
     int x(){return _x;}
@@ -36,8 +36,6 @@ public:
 
 	void setX(int val){
 	    _x=val;
-	    //std::cerr<<"setX.........."<<_x<<std::endl;
-	    //std::cerr<<"x = "<<_x<<std::endl;
 	    int id=(_x-20)/(100+LARGEUR_BLOC*NB_COL);
 	    if(_x<=20 )
             _xws= -1;
@@ -45,6 +43,7 @@ public:
             _xws=(_x-20-id*(100+LARGEUR_BLOC * NB_COL))/LARGEUR_BLOC;
         else if(_x<=20+(id+1)*(100+LARGEUR_BLOC * NB_COL))
             _xws= -1;
+        else _xws=0;
 	}
 
 
@@ -62,6 +61,9 @@ public:
         _bColor = b;
 	}
 	bool vide(){return _vide;}
+	void setVide(bool vide){
+	    _vide=vide;
+	}
 	void afficher();
 protected:
 	int _x;

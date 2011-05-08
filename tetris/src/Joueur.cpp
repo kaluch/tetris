@@ -26,7 +26,6 @@ void Joueur::sleep(unsigned int mseconds)
 
 void Joueur::afficher()
 {
-    //std::cerr << "Joueur " << nom() <<id_joueur()<< std::endl;
     workspace().afficher(20+id_joueur()*(100+LARGEUR_BLOC * NB_COL),20);
     if(_piece_courante->y()<HAUTEUR_BLOC * NB_LIGNES+20)
     _piece_courante->afficher();
@@ -44,13 +43,10 @@ void Joueur::gestion_piece_courante()
     for(int i=0;i<4;i++){
         int x = piece_courante()->blocs()[i].xws();
         int y = piece_courante()->blocs()[i].yws();
-        //std::cerr<<y<<" "<<x<<std::endl;
         if(y==0){
             poser_piece();
             break;
         }
-
-        //std::cerr<<y-1<<" "<<x<<std::endl;
         if(! _workspace.tableau()[y-1][x].vide()){
             poser_piece();}
     }
@@ -67,17 +63,13 @@ void Joueur::poser_piece(){
 
 void Joueur::changer_pieces()
 {
-    //std::cerr<<"........changer_piece courante = next[0]"<<std::endl;
-    //std::cerr<<"..courante.x = "<<_piece_courante->x()<<"\n next.x = "<< next_piece()[0].x()<<std::endl;
     *_piece_courante = next_p();
     piece_courante()->translateX(-150);
-    //std::cerr<<"...courante.x = "<<_piece_courante->x()<<"\n next.x = "<< next_piece()[0].x()<<std::endl;
 
     for(int i=0; i<_nb_next-1; i++){
     _next_piece[i] = _next_piece[i+1];
     _next_piece[i].translateY(100);
     }
-    //std::cerr<<"next.........0 et 1...ok"<<std::endl;
     init_next();
 }
 

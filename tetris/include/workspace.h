@@ -59,7 +59,7 @@ public:
             _tableau[i].resize(nbCol);
             for(int j=0; j<nbCol; j++)
             {
-                _tableau[i][j] = Bloc(30+LARGEUR_BLOC*j+(100+LARGEUR_BLOC * NB_COL)*id,30+LARGEUR_BLOC*i,false);
+                _tableau[i][j] = Bloc(30+LARGEUR_BLOC*j+(100+LARGEUR_BLOC * NB_COL)*id,30+LARGEUR_BLOC*i,true);
             }
         }
     }

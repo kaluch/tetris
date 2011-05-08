@@ -48,7 +48,7 @@ public:
     }
     Piece()
     {
-        std::cerr<<"constr piece()"<<std::endl;
+        //std::cerr<<"constr piece()"<<std::endl;
         _x = 30+LARGEUR_BLOC * NB_COL/2;
         _y = 70+HAUTEUR_BLOC * NB_LIGNES;
         _rColor=0;
@@ -75,7 +75,6 @@ public:
         }
         _id_piece = alea;
         _id_rot = 1;
-        //std::cerr<<"PIECE("<<_x<<","<<_y<<","<<_id_piece<<") OK"<<std::endl;
     }
     ~Piece() {}
 
@@ -102,14 +101,14 @@ public:
     void moveG()
     {
         if(leftest().xws()>0){
-            std::cerr<<"xws = ............"<<leftest().xws()<<std::endl;
+            //std::cerr<<"xws = ............"<<leftest().xws()<<std::endl;
             translateX(-20);
         }
     }
     void moveD()
     {
         if(rightest().xws()<9){
-            std::cerr<<"xws = ............"<<rightest().xws()<<std::endl;
+            //std::cerr<<"xws = ............"<<rightest().xws()<<std::endl;
         translateX(20);
         }
     }
