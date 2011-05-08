@@ -26,7 +26,7 @@ void Workspace::afficher(int x,int y)
 
 void Workspace::afficher_tableau()
 {
-    for(int i=0; i<nb_lignes(); i++)
+    for(int i=0; i<nb_lignes()-3; i++)
     {
         for(int j=0; j<nb_col(); j++)
         {
@@ -52,19 +52,6 @@ int Workspace::compte_ligne(int ligne)
             cpt++;
     }
     return cpt;
-}
-
-void Workspace::detruire_ligne(int ligne)
-{
-    std::cerr<<".........detruire ligne......... "<<ligne<<std::endl;
-    for(int i=ligne; i<nb_lignes()-1; i++)
-    {
-        for(int j=0; j<nb_col(); j++)
-        {
-            _tableau[i+1][j].setY(_tableau[i+1][j].y() - 20);
-            setTableau(i, j,_tableau[i+1][j]);
-        }
-    }
 }
 
 void Workspace::ajouter_piece(Piece *courante)
@@ -95,12 +82,13 @@ void Workspace::afficher_tab_nonvide()
 void Workspace::tourner(Piece *courante)
 {
     bool move = true;
-    for(int i=0;i<4;i++){
+    for(int i=0; i<4; i++)
+    {
         if( ! _tableau[courante->blocs()[i].yws()][courante->blocs()[i].xws()-1].vide() || ! _tableau[courante->blocs()[i].yws()][courante->blocs()[i].xws()+1].vide() || courante->blocs()[i].yws()== nb_lignes()-1)
             move = false;
     }
     if(move)
-    courante->tourner();
+        courante->tourner();
 }
 
 void Workspace::descendre(Piece *courante)
@@ -112,7 +100,8 @@ void Workspace::descendre(Piece *courante)
 void Workspace::moveG(Piece *courante)
 {
     bool move = true;
-    for(int i=0;i<4;i++){
+    for(int i=0; i<4; i++)
+    {
         if( ! _tableau[courante->blocs()[i].yws()][courante->blocs()[i].xws()-1].vide())
             move = false;
     }
@@ -124,7 +113,8 @@ void Workspace::moveG(Piece *courante)
 void Workspace::moveD(Piece *courante)
 {
     bool move = true;
-    for(int i=0;i<4;i++){
+    for(int i=0; i<4; i++)
+    {
         if(! _tableau[courante->blocs()[i].yws()][courante->blocs()[i].xws()+1].vide())
             move = false;
     }
@@ -132,18 +122,40 @@ void Workspace::moveD(Piece *courante)
         courante->moveD();
 
 }
+void Workspace::detruire_ligne(int ligne)
+{
+    std::cerr<<".........detruire ligne......... "<<ligne<<std::endl;
+    for(int i=ligne; i<nb_lignes()-1; i++)
+    {
+        for(int j=0; j<nb_col(); j++)
+        {
+            _tableau[i+1][j].setY(_tableau[i+1][j].y() - 20);
+            setTableau(i, j,_tableau[i+1][j]);
+        }
+    }
+}
+void Workspace::ajouterHandicap(int id)
+{
 
-void Workspace::ajouterHandicap(){
+    for(int i=_nb_lignes; i> 0; i--)
+    {
+        for(int j=0; j<nb_col(); j++)
+        {
+            _tableau[i-1][j].setY(_tableau[i-1][j].y() + 20);
+            _tableau[i][j] = _tableau[i-1][j];
+        }
+    }
 
-	for(int i=nb_lignes() - 1;i> 0;i--){
-		for(int j=0;j<nb_col();j++){
-			setTableau(i,j,_tableau[i-1][j]);
-		}
-	}
-	for(int i=0;i<nb_col();i++)
-		setTableau(0,i,Bloc(i*LARGEUR_BLOC,0,255,255,255));
+    for(int i=0; i<(nb_col()-1)/2; i++)
+    {
+        int p =i*2;
+        int imp =i*2+1;
+        _tableau[0][p] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(p*LARGEUR_BLOC),30,255,255,255);
+        _tableau[0][imp] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(imp*LARGEUR_BLOC),30,false);
+    }
 }
 
-void Workspace::retirerHandicap(){
-	detruire_ligne(0);
+void Workspace::retirerHandicap()
+{
+    detruire_ligne(0);
 }

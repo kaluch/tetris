@@ -339,13 +339,13 @@ void Jeu::gestion_event(SDL_Event event,bool *continuer){
 
 void Jeu::lancer_handicap(int id_joueur){
     std::cerr<<"lancement handicap"<<std::endl;
-	int alea =rand()%(humains().size() + computers().size());
+	unsigned int alea =rand()%(humains().size() + computers().size());
 	std::cerr<<"joueur id num "<<alea<<std::endl;
 	while(alea == id_joueur){
 		alea = rand()%(humains().size() + computers().size());
         std::cerr<<"joueur id num "<<alea<<std::endl;
 	}
-	if(alea < humains().size()-1){
+	if(alea < humains().size()){
         std::cerr<<"ajout handicap humain"<<alea<<std::endl;
         _humains[alea].ajouterHandicap();
 

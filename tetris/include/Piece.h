@@ -93,7 +93,7 @@ public:
     void descendre()
     {
         if(downest().yws()>0){
-            std::cerr<<"yws = ............"<<downest().yws()<<std::endl;
+            //std::cerr<<"yws = ............"<<downest().yws()<<std::endl;
             translateY(-20);
         }
 
