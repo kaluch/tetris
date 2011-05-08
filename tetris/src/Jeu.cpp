@@ -29,7 +29,7 @@ void Jeu::init_SDL(SDL_Surface *screen)
     SDL_WM_SetCaption("TETRIS SOUCHET DIGNOIRE 2011", NULL);
     SDL_EnableKeyRepeat(300,50);
 
-    fondWs = loadTexture("image/fondWs.png");
+    fondWs = loadTexture("image/fond_ws.png");
     perdu = loadTexture("image/perdu.png");
     //std::cerr<< "fond  ws = "<<fondWs<<std::endl;
 
@@ -101,7 +101,7 @@ void Jeu::afficherFond(int x,int y)
 {
     glBindTexture(GL_TEXTURE_2D, fondWs);
     glBegin(GL_QUADS);
-    glColor3ub(45,45,45);
+    glColor3ub(155,155,155);
     glTexCoord2d(0,1);  glVertex2d(x,y+HAUTEUR_BLOC * NB_LIGNES);
     glTexCoord2d(0,0);  glVertex2d(x,y);
     glTexCoord2d(1,0);  glVertex2d(x+LARGEUR_BLOC * NB_COL,y);
@@ -159,7 +159,7 @@ void Jeu::afficherChiffre(int x,int y,int image){
 
     glBindTexture(GL_TEXTURE_2D, nb);
     glBegin(GL_QUADS);
-    glColor3ub(255,5,5);
+    glColor3ub(155,155,155);
     //glColor3ub(0,0,0);
     glTexCoord2d(0,1);
     glVertex2d(x,y+20);

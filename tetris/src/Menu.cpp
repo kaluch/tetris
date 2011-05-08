@@ -14,12 +14,13 @@ GLuint sixm;
 GLuint septm;
 GLuint huitm;
 GLuint neufm;
+GLuint fondm;
 
 void Menu::lancer_menu(){
     std::cerr<<"\n\n.........................Debut du menu.........................\n\n"<<std::endl;
     jouer = loadTexture("image/ENTREE.png");
-    nbjoueur = loadTexture("image/nbjoueur.png");
-    com = loadTexture("image/com.png");
+    nbjoueur = loadTexture("image/nb_humains.png");
+    com = loadTexture("image/nb_cpu.png");
     flechegauche = loadTexture("image/flechegauche.png");
     flechedroite = loadTexture("image/flechedroite.png");
     zerom = loadTexture("image/zero.png");
@@ -32,6 +33,7 @@ void Menu::lancer_menu(){
     septm = loadTexture("image/sept.png");
     huitm = loadTexture("image/huit.png");
     neufm = loadTexture("image/neuf.png");
+    fondm = loadTexture("image/fond2.png");
     bool continuer = true;
     while(continuer)
     {
@@ -84,6 +86,7 @@ void Menu::gestion_event(SDL_Event event,bool *continuer){
     }
 }
 void Menu::afficher(){
+    //afficherFond(0,0);
     afficherEntree();
     afficherNbjoueur();
 }
@@ -91,7 +94,7 @@ void Menu::afficherNbjoueur(){
     // nombre de joueur
     glBindTexture(GL_TEXTURE_2D, nbjoueur);
     glBegin(GL_QUADS);
-    glColor3ub(255,0,50);
+    glColor3ub(255,255,255);
     glTexCoord2d(0,1);  glVertex2d(200,300+128);
     glTexCoord2d(0,0);  glVertex2d(200,300);
     glTexCoord2d(1,0);  glVertex2d(200+256,300);
@@ -119,7 +122,7 @@ void Menu::afficherNbjoueur(){
     // afficher le COM
     glBindTexture(GL_TEXTURE_2D, com);
     glBegin(GL_QUADS);
-    glColor3ub(255,0,50);
+    glColor3ub(255,255,255);
     glTexCoord2d(0,1);  glVertex2d(600,300+128);
     glTexCoord2d(0,0);  glVertex2d(600,300);
     glTexCoord2d(1,0);  glVertex2d(600+256,300);
@@ -190,4 +193,15 @@ void Menu::afficherEntree(){
     glEnd();
 }
 
+void Menu::afficherFond(int x,int y)
+{
+    glBindTexture(GL_TEXTURE_2D, fondm);
+    glBegin(GL_QUADS);
+    glColor3ub(45,45,45);
+    glTexCoord2d(0,1);  glVertex2d(x,y+HAUTEUR_ECRAN);
+    glTexCoord2d(0,0);  glVertex2d(x,y);
+    glTexCoord2d(1,0);  glVertex2d(x+LARGEUR_ECRAN,y);
+    glTexCoord2d(1,1);  glVertex2d(x+LARGEUR_ECRAN,y+HAUTEUR_ECRAN);
+    glEnd();
+}
 

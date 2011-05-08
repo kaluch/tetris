@@ -18,6 +18,7 @@ class Menu
 
         void afficher();
         void afficherEntree();
+        void afficherFond(int x,int y);
         void afficherNbjoueur();
         void afficherChiffre(int chiffre,int x,int y);
         void gestion_event(SDL_Event event,bool *continuer);
