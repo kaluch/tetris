@@ -73,6 +73,13 @@ void Piece::tourner()
         charger_blocs(id_piece(),id_rot());
     }
 }
+void Piece::detourner()
+{
+        _id_rot--;
+        if (_id_rot < 1)
+            _id_rot = NB_ROT-1;
+        charger_blocs(id_piece(),id_rot());
+}
 
 void Piece::charger_blocs(int id_piece, int id_rot)
 {

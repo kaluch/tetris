@@ -49,6 +49,7 @@ class Humain : public Joueur
     int _lastDown;
     int _lastLeft;
     int _lastRight;
+    int _cmp;
     private:
 };
 

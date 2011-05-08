@@ -21,21 +21,21 @@ class Piece
 {
 public:
 
-    Piece(int val, int r, int g,int b)
+    Piece(int id,int rot,int x,int y)
     {
-        _id_piece = val;
-        _id_rot = 0;
-        _rColor = r;
-        _gColor = g;
-        _bColor = b;
-        _x = 120;
-        _y = 380;
+        _id_piece = id;
+        _id_rot = rot;
+        _rColor = 155;
+        _gColor = 155;
+        _bColor = 155;
+        _x = x;
+        _y = y;
         int k=0;
         for(int i=0; i<4; i++)
         {
             for(int j=0; j<4; j++)
             {
-                if(LISTE_PIECES[val][1][i][j] == 1)
+                if(LISTE_PIECES[id][1][i][j] == 1)
                 {
                     int x = (i-2)*LARGEUR_BLOC + _x;
                     int y = (j-2)*HAUTEUR_BLOC + _y;
@@ -48,7 +48,7 @@ public:
     }
     Piece()
     {
-        std::cerr<<"constr piece()"<<std::endl;
+        //std::cerr<<"constr piece()"<<std::endl;
         _x = 30+LARGEUR_BLOC * NB_COL/2;
         _y = 70+HAUTEUR_BLOC * NB_LIGNES;
         _rColor=0;
@@ -75,12 +75,12 @@ public:
         }
         _id_piece = alea;
         _id_rot = 1;
-        //std::cerr<<"PIECE("<<_x<<","<<_y<<","<<_id_piece<<") OK"<<std::endl;
     }
     ~Piece() {}
 
     void afficher();
     void tourner();
+    void detourner();
     void charger_blocs(int id_piece,int id_rot);
     void changerPiece(int id_piece,int id_rot,int r, int g, int b);
     void translateX(int val);
@@ -101,14 +101,14 @@ public:
     void moveG()
     {
         if(leftest().xws()>0){
-            std::cerr<<"xws = ............"<<leftest().xws()<<std::endl;
+            //std::cerr<<"xws = ............"<<leftest().xws()<<std::endl;
             translateX(-20);
         }
     }
     void moveD()
     {
         if(rightest().xws()<9){
-            std::cerr<<"xws = ............"<<rightest().xws()<<std::endl;
+            //std::cerr<<"xws = ............"<<rightest().xws()<<std::endl;
         translateX(20);
         }
     }

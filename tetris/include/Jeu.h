@@ -31,20 +31,22 @@ public:
     Jeu(int nb_joueurs):_menu()
     {
         std::cerr<<"constr jeu"<<std::endl;
-
         std::ostringstream out;
+
+        int ia = 1;
 
         init_SDL(_screen);
         _menu.lancer_menu();
         std::cerr<<"init joueurs"<<std::endl;
         nb_joueurs = _menu.nb_joueur();
-        for (int i = 0; i < nb_joueurs; i++){
+        for (int i = 0; i < nb_joueurs; i++)
+        {
             std::cerr<<"ajout j"<<i<<std::endl;
             _humains.push_back(Humain("j",i));
             std::cerr<<"joueur cree n°: "<<i<<std::endl;
         }
         std::cerr<<"ajout IA"<<nb_joueurs<<std::endl;
-        //_computers.push_back(Computer("j",nb_joueurs,0));
+        _computers.push_back(Computer("j",nb_joueurs,ia));
         std::cerr<<"Computer cree n°: "<<nb_joueurs<<std::endl;
 
         std::cerr<<"init joueurs ...........OK"<<std::endl;
@@ -61,12 +63,14 @@ public:
     void lancer_jeu();
     void tester_fin();
     void gestion_event(SDL_Event event, bool *continuer);
-    std::vector<Humain> humains(){
+    std::vector<Humain> humains()
+    {
         return _humains;
-        }
-    std::vector<Computer> computers(){
-            return _computers;
-            }
+    }
+    std::vector<Computer> computers()
+    {
+        return _computers;
+    }
 
     void lancer_handicap(int id_joueur);
 
