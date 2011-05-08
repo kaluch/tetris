@@ -21,21 +21,21 @@ class Piece
 {
 public:
 
-    Piece(int val, int r, int g,int b)
+    Piece(int id,int rot,int x,int y)
     {
-        _id_piece = val;
-        _id_rot = 0;
-        _rColor = r;
-        _gColor = g;
-        _bColor = b;
-        _x = 120;
-        _y = 380;
+        _id_piece = id;
+        _id_rot = rot;
+        _rColor = 155;
+        _gColor = 155;
+        _bColor = 155;
+        _x = x;
+        _y = y;
         int k=0;
         for(int i=0; i<4; i++)
         {
             for(int j=0; j<4; j++)
             {
-                if(LISTE_PIECES[val][1][i][j] == 1)
+                if(LISTE_PIECES[id][1][i][j] == 1)
                 {
                     int x = (i-2)*LARGEUR_BLOC + _x;
                     int y = (j-2)*HAUTEUR_BLOC + _y;
@@ -81,6 +81,7 @@ public:
 
     void afficher();
     void tourner();
+    void detourner();
     void charger_blocs(int id_piece,int id_rot);
     void changerPiece(int id_piece,int id_rot,int r, int g, int b);
     void translateX(int val);

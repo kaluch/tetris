@@ -64,7 +64,7 @@ void Menu::gestion_event(SDL_Event event,bool *continuer){
             std::cerr<<"Escape"<<std::endl;
             *continuer = false;
             break;
-        case SDLK_KP_ENTER:
+        case SDLK_RETURN:
             std::cerr<<"Enter"<<std::endl;
             *continuer = false;
             break;

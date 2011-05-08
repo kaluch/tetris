@@ -126,7 +126,7 @@ void Joueur::traitement_workspace()
 void Joueur::ajouterHandicap()
 {
 	setHandicap(nb_handicap() + 1);
-	_workspace.ajouterHandicap(_id_joueur);
+	_workspace.ajouterHandicap(_id_joueur,_nb_handicap);
 }
 
 void Joueur::retirerHandicap()

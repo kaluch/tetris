@@ -46,28 +46,6 @@ public:
     {
         _nb_lignes = val;
     }
-    /*void Set_tableau()
-    {
-        _tableau = (Bloc **)malloc(NB_LIGNES * sizeof(Bloc *));
-        for (int i = 0; i < NB_LIGNES; i++)
-            _tableau[i] = (Bloc*)malloc(NB_COL * sizeof(Bloc));
-        for(int i=0;i<NB_LIGNES;i++){
-            for(int j=0;j<NB_COL;j++){
-                Bloc tmp(i,j,false);
-                _tableau[i][j] = tmp;
-            }
-        }
-    }
-    void free_tableau()
-    {
-        for (int i = 0; i < NB_LIGNES; i++)
-            free(_tableau[i]);
-        free(_tableau);
-
-    }
-    Bloc **tableau(){
-        return _tableau;
-    }*/
 
     void setTableau(int i,int j,Bloc bloc){
         _tableau[i][j]= bloc;
@@ -102,7 +80,7 @@ public:
     void tourner(Piece *courante);
     void moveG(Piece *courante);
     void moveD(Piece *courante);
-    void ajouterHandicap(int id);
+    void ajouterHandicap(int id,int nbHandi);
     void retirerHandicap();
 protected:
 private:
