@@ -75,14 +75,14 @@ void Workspace::tourner(Piece *courante)
     if(piece_sim.leftest().xws() <0 || piece_sim.rightest().xws()>10)
         move = false;
     if(move)
-        courante->tourner();
-
-    for(int i=0; i<4; i++)
     {
-        if(!  _tableau[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide() ||
-            ! _tableau[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide() ||
-             courante->blocs()[i].yws()== nb_lignes()-1)
-            courante->detourner();
+        courante->tourner();
+        for(int i=0; i<4; i++)
+        {
+            if(!  _tableau[courante->blocs()[i].yws()][courante->blocs()[i].xws()].vide() ||
+                    courante->blocs()[i].yws()== nb_lignes()-1)
+                courante->detourner();
+        }
     }
 }
 
@@ -144,16 +144,19 @@ void Workspace::ajouterHandicap(int id,int nbHandi)
     for(int i=0; i<(nb_col())/2; i++)
     {
         int a=nbHandi%2;
-        if(a==0){
-        int p =i*2;
-        int imp =i*2+1;
-        _tableau[0][p] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(p*LARGEUR_BLOC),30,150,150,150);
-        _tableau[0][imp] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(imp*LARGEUR_BLOC),30,true);}
-        else{
-        int p =i*2;
-        int imp =i*2+1;
-        _tableau[0][imp] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(imp*LARGEUR_BLOC),30,150,150,150);
-        _tableau[0][p] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(p*LARGEUR_BLOC),30,true);
+        if(a==0)
+        {
+            int p =i*2;
+            int imp =i*2+1;
+            _tableau[0][p] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(p*LARGEUR_BLOC),30,150,150,150);
+            _tableau[0][imp] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(imp*LARGEUR_BLOC),30,true);
+        }
+        else
+        {
+            int p =i*2;
+            int imp =i*2+1;
+            _tableau[0][imp] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(imp*LARGEUR_BLOC),30,150,150,150);
+            _tableau[0][p] = Bloc(30+(100+LARGEUR_BLOC * NB_COL)*id+(p*LARGEUR_BLOC),30,true);
         }
     }
 }

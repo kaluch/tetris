@@ -250,7 +250,12 @@ void Jeu::tester_fin(){
     {
         if( ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2].vide() ||
                 ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 -1].vide() ||
-                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 +1].vide())
+                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 +1].vide() ||
+                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 -2].vide() ||
+                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 +2].vide() ||
+                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 -3].vide() ||
+                ! _computers[i].workspace().tableau()[NB_LIGNES-1][NB_COL/2 +3].vide()
+           )
         {
             _computers[i].setPlay(false);
             //std::cerr<<" tester fin......... play = "<<_humains[i].play()<<std::endl;
