@@ -17,10 +17,8 @@
 class Bloc {
 public:
     Bloc(){}
-	Bloc(int x,int y,int r,int g,int b){
+	Bloc(int x,int y,int r,int g,int b) : _x(x), _y(y), _yws((y-20)/20), _rColor(r), _gColor(g), _bColor(b){
 	    //std::cerr<<"constr bloc "<<x<<" "<<y<<" "<<r<<" "<<g<<" "<<b;
-        _x = x;
-        _y = y;
 
         if( x<100+LARGEUR_BLOC * NB_COL){
             _xws=(x-20)/LARGEUR_BLOC;
@@ -35,24 +33,8 @@ public:
             _xws=(x-20-3*(100+LARGEUR_BLOC * NB_COL))/20;
         else {
         _xws=0;}
-
-        _yws = (y-20)/20;
-        _rColor = r;
-        _gColor = g;
-        _bColor = b;
-        _vide = false;
-        //std::cerr<<_vide<<"....OK"<<std::endl;
 	}
-	Bloc(int x,int y,bool boolean){
-        _x=x;
-        _y=y;
-        _xws = (x-20)/20;
-        _yws = (y-20)/20;
-        _rColor = 125;
-        _gColor = 0;
-        _bColor = 0;
-        _vide = true;
-	}
+	Bloc(int x,int y,bool boolean) : _x(x), _y(y), _xws((x-20)/20), _yws((y-20)/20), _rColor(125), _gColor(0), _bColor(0), _vide(true){}
 	~Bloc(){}
 
     int x(){return _x;}

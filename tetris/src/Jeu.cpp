@@ -200,7 +200,7 @@ void Jeu::lancer_jeu(){
             }
 
             if(_humains[i].reserveHandicap() > 0){
-                std::cerr<<_humains.reserveHandicap<<" handicaps a lancer par j"<<i<<std::endl;
+                std::cerr<<" handicaps a lancer par j"<<i<<std::endl;
             	for(int j=0;j<_humains[i].reserveHandicap();j++)
             		lancer_handicap(i);
             }
