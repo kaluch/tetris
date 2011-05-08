@@ -14,15 +14,15 @@ GLuint sixm;
 GLuint septm;
 GLuint huitm;
 GLuint neufm;
-GLuint fondm;
+GLuint logom;
 
 void Menu::lancer_menu(){
     std::cerr<<"\n\n.........................Debut du menu.........................\n\n"<<std::endl;
-    jouer = loadTexture("image/ENTREE.png");
-    nbjoueur = loadTexture("image/nb_humains.png");
-    com = loadTexture("image/nb_cpu.png");
-    flechegauche = loadTexture("image/flechegauche.png");
-    flechedroite = loadTexture("image/flechedroite.png");
+    jouer = loadTexture("image/entree_2.png");
+    nbjoueur = loadTexture("image/nb_humains2.png");
+    com = loadTexture("image/nb_cpu2.png");
+    flechegauche = loadTexture("image/moinsgauche.png");
+    flechedroite = loadTexture("image/plusdroite.png");
     zerom = loadTexture("image/zero.png");
     unm = loadTexture("image/un.png");
     deuxm = loadTexture("image/deux.png");
@@ -33,7 +33,7 @@ void Menu::lancer_menu(){
     septm = loadTexture("image/sept.png");
     huitm = loadTexture("image/huit.png");
     neufm = loadTexture("image/neuf.png");
-    fondm = loadTexture("image/fond2.png");
+    logom = loadTexture("image/logo.png");
     bool continuer = true;
     while(continuer)
     {
@@ -72,21 +72,45 @@ void Menu::gestion_event(SDL_Event event,bool *continuer){
             break;
         case SDLK_RIGHT:
             std::cerr<<"Right"<<std::endl;
-            if(_nb_joueur<9)
-            _nb_joueur=_nb_joueur+1;
+            if(!select()){
+                if(_nb_joueur<9){
+                    setNbJoueur(nb_joueur()+1);
+                }
+            }
+            else
+                if(_nb_cpu<9){
+                    setNbCpu(nb_cpu()+1);
+                }
             break;
         case SDLK_LEFT:
             std::cerr<<"Left"<<std::endl;
-            if(_nb_joueur>0)
-            _nb_joueur=_nb_joueur-1;
+            if(!select()){
+                if(_nb_joueur>0){
+                    setNbJoueur(nb_joueur()-1);
+                }
+            }
+            else
+                if(_nb_cpu>0){
+                    setNbCpu(nb_cpu()-1);
+                }
             break;
+        case SDLK_UP:
+            std::cerr<<"Switch menu"<<std::endl;
+            switch_menu();
         default:
             break;
         }
     }
 }
+
+void Menu::switch_menu(){
+    if(select())
+        setSelect(false);
+    else
+        setSelect(true);
+}
 void Menu::afficher(){
-    //afficherFond(0,0);
+    afficherLogo();
     afficherEntree();
     afficherNbjoueur();
 }
@@ -94,42 +118,65 @@ void Menu::afficherNbjoueur(){
     // nombre de joueur
     glBindTexture(GL_TEXTURE_2D, nbjoueur);
     glBegin(GL_QUADS);
-    glColor3ub(255,255,255);
-    glTexCoord2d(0,1);  glVertex2d(200,300+128);
-    glTexCoord2d(0,0);  glVertex2d(200,300);
-    glTexCoord2d(1,0);  glVertex2d(200+256,300);
-    glTexCoord2d(1,1);  glVertex2d(200+256,300+128);
+    if(!select())
+        glColor3ub(255,255,255);
+    else
+        glColor3ub(55,55,55);
+    glTexCoord2d(0,1);  glVertex2d(50,240+128);
+    glTexCoord2d(0,0);  glVertex2d(50,240);
+    glTexCoord2d(1,0);  glVertex2d(50+256,240);
+    glTexCoord2d(1,1);  glVertex2d(50+256,240+128);
     glEnd();
     // afficher le nombre
-    afficherChiffre(_nb_joueur,310,250);
+    afficherChiffre(_nb_joueur,180,205);
     // afficher les fleches
     glBindTexture(GL_TEXTURE_2D, flechegauche);
     glBegin(GL_QUADS);
-    glColor3ub(255,255,0);
-    glTexCoord2d(0,1);  glVertex2d(165,240+64);
-    glTexCoord2d(0,0);  glVertex2d(165,240);
-    glTexCoord2d(1,0);  glVertex2d(165+128,240);
-    glTexCoord2d(1,1);  glVertex2d(165+128,240+64);
+    glColor3ub(0,255,0);
+    glTexCoord2d(0,1);  glVertex2d(50,160+128);
+    glTexCoord2d(0,0);  glVertex2d(50,160);
+    glTexCoord2d(1,0);  glVertex2d(50+96,160);
+    glTexCoord2d(1,1);  glVertex2d(50+96,160+128);
     glEnd();
     glBindTexture(GL_TEXTURE_2D, flechedroite);
     glBegin(GL_QUADS);
-    glColor3ub(255,255,0);
-    glTexCoord2d(0,1);  glVertex2d(365,235+64);
-    glTexCoord2d(0,0);  glVertex2d(365,235);
-    glTexCoord2d(1,0);  glVertex2d(365+128,235);
-    glTexCoord2d(1,1);  glVertex2d(365+128,235+64);
+    glColor3ub(255,0,0);
+    glTexCoord2d(0,1);  glVertex2d(325-89,170+100);
+    glTexCoord2d(0,0);  glVertex2d(325-89,170);
+    glTexCoord2d(1,0);  glVertex2d(325,170);
+    glTexCoord2d(1,1);  glVertex2d(325,170+100);
     glEnd();
     // afficher le COM
     glBindTexture(GL_TEXTURE_2D, com);
     glBegin(GL_QUADS);
-    glColor3ub(255,255,255);
-    glTexCoord2d(0,1);  glVertex2d(600,300+128);
-    glTexCoord2d(0,0);  glVertex2d(600,300);
-    glTexCoord2d(1,0);  glVertex2d(600+256,300);
-    glTexCoord2d(1,1);  glVertex2d(600+256,300+128);
+    if(select())
+        glColor3ub(255,255,255);
+    else
+        glColor3ub(55,55,55);
+    glTexCoord2d(0,1);  glVertex2d(LARGEUR_ECRAN-316,240+128);
+    glTexCoord2d(0,0);  glVertex2d(LARGEUR_ECRAN-316,240);
+    glTexCoord2d(1,0);  glVertex2d(LARGEUR_ECRAN-60,240);
+    glTexCoord2d(1,1);  glVertex2d(LARGEUR_ECRAN-60,240+128);
     glEnd();
     // afficher le nombre de com
-    afficherChiffre(1,725,250);
+    afficherChiffre(nb_cpu(),LARGEUR_ECRAN-200,205);
+     // afficher les fleches
+    glBindTexture(GL_TEXTURE_2D, flechegauche);
+    glBegin(GL_QUADS);
+    glColor3ub(0,255,0);
+    glTexCoord2d(0,1);  glVertex2d(LARGEUR_ECRAN-316,160+128);
+    glTexCoord2d(0,0);  glVertex2d(LARGEUR_ECRAN-316,160);
+    glTexCoord2d(1,0);  glVertex2d(LARGEUR_ECRAN-316+96,160);
+    glTexCoord2d(1,1);  glVertex2d(LARGEUR_ECRAN-316+96,160+128);
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, flechedroite);
+    glBegin(GL_QUADS);
+    glColor3ub(255,0,0);
+    glTexCoord2d(0,1);  glVertex2d(LARGEUR_ECRAN-160,170+100);
+    glTexCoord2d(0,0);  glVertex2d(LARGEUR_ECRAN-160,170);
+    glTexCoord2d(1,0);  glVertex2d(LARGEUR_ECRAN-160+96,170);
+    glTexCoord2d(1,1);  glVertex2d(LARGEUR_ECRAN-160+96,170+100);
+    glEnd();
 }
 void Menu::afficherChiffre(int image,int x,int y){
     GLuint nb;
@@ -169,7 +216,7 @@ void Menu::afficherChiffre(int image,int x,int y){
 
     glBindTexture(GL_TEXTURE_2D, nb);
     glBegin(GL_QUADS);
-    glColor3ub(255,0,50);
+    glColor3ub(255,255,255);
     //glColor3ub(0,0,0);
     glTexCoord2d(0,1);
     glVertex2d(x,y+32);
@@ -185,23 +232,23 @@ void Menu::afficherChiffre(int image,int x,int y){
 void Menu::afficherEntree(){
     glBindTexture(GL_TEXTURE_2D, jouer);
     glBegin(GL_QUADS);
-    glColor3ub(255,0,50);
-    glTexCoord2d(0,1);  glVertex2d(400,50+128);
-    glTexCoord2d(0,0);  glVertex2d(400,50);
-    glTexCoord2d(1,0);  glVertex2d(400+256,50);
-    glTexCoord2d(1,1);  glVertex2d(400+256,50+128);
+    glColor3ub(255,255,255);
+    glTexCoord2d(0,1);  glVertex2d(LARGEUR_ECRAN/2-132,50+180);
+    glTexCoord2d(0,0);  glVertex2d(LARGEUR_ECRAN/2-132,50);
+    glTexCoord2d(1,0);  glVertex2d(LARGEUR_ECRAN/2-132+264,50);
+    glTexCoord2d(1,1);  glVertex2d(LARGEUR_ECRAN/2-132+264,50+180);
     glEnd();
 }
 
-void Menu::afficherFond(int x,int y)
+void Menu::afficherLogo()
 {
-    glBindTexture(GL_TEXTURE_2D, fondm);
+    glBindTexture(GL_TEXTURE_2D, logom);
     glBegin(GL_QUADS);
-    glColor3ub(45,45,45);
-    glTexCoord2d(0,1);  glVertex2d(x,y+HAUTEUR_ECRAN);
-    glTexCoord2d(0,0);  glVertex2d(x,y);
-    glTexCoord2d(1,0);  glVertex2d(x+LARGEUR_ECRAN,y);
-    glTexCoord2d(1,1);  glVertex2d(x+LARGEUR_ECRAN,y+HAUTEUR_ECRAN);
+    glColor3ub(255,255,255);
+    glTexCoord2d(0,1);  glVertex2d(LARGEUR_ECRAN/2-132,HAUTEUR_ECRAN-20);
+    glTexCoord2d(0,0);  glVertex2d(LARGEUR_ECRAN/2-132,HAUTEUR_ECRAN-190);
+    glTexCoord2d(1,0);  glVertex2d(LARGEUR_ECRAN/2+132,HAUTEUR_ECRAN-190);
+    glTexCoord2d(1,1);  glVertex2d(LARGEUR_ECRAN/2+132,HAUTEUR_ECRAN-20);
     glEnd();
 }
 

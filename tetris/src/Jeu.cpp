@@ -219,6 +219,11 @@ void Jeu::lancer_jeu(){
                 }
                 _computers[i].setCmp(_computers[i].cmp()+1);
             }
+            if(_computers[i].reserveHandicap() > 0){
+                std::cerr<<_computers[i].reserveHandicap()<<" handicaps a lancer par cpu"<<i+_humains.size()<<std::endl;
+            	for(int j=0;j<_computers[i].reserveHandicap();j++)
+            		lancer_handicap(i+_humains.size());
+            }
         }
         afficher();
         glFlush();
@@ -356,10 +361,12 @@ void Jeu::lancer_handicap(int id_joueur){
 
 
     }
-    if(id_joueur <= humains().size())
+    if(id_joueur <= humains().size()-1)
         _humains[id_joueur].setReserveHandicap(_humains[id_joueur].reserveHandicap() - 1);
-    else
-        _computers[id_joueur-humains().size()].setReserveHandicap(_humains[id_joueur-humains().size()].reserveHandicap() - 1);
+    else{
+        _computers[id_joueur-humains().size()].setReserveHandicap(_computers[id_joueur-humains().size()].reserveHandicap() - 1);
+        std::cerr<<"maj reserve de cpu"<<id_joueur-humains().size()<<" "<<_computers[id_joueur-humains().size()].reserveHandicap()<<std::endl;
+    }
     std::cerr<<"Fin handicap lancé"<<std::endl;
 }
 

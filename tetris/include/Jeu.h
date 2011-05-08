@@ -45,9 +45,13 @@ public:
             _humains.push_back(Humain("j",i));
             std::cerr<<"joueur cree n°: "<<i<<std::endl;
         }
-        std::cerr<<"ajout IA"<<nb_joueurs<<std::endl;
-        _computers.push_back(Computer("j",nb_joueurs,ia));
-        std::cerr<<"Computer cree n°: "<<nb_joueurs<<std::endl;
+        int nb_cpu = _menu.nb_cpu();
+        for (int i = 0; i < nb_cpu; i++)
+        {
+            std::cerr<<"ajout IA"<<nb_joueurs+i<<std::endl;
+            _computers.push_back(Computer("j",nb_joueurs+i,ia));
+            std::cerr<<"Computer cree n°: "<<nb_joueurs+i<<std::endl;
+        }
 
         std::cerr<<"init joueurs ...........OK"<<std::endl;
 

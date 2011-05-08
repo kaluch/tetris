@@ -11,24 +11,33 @@
 class Menu
 {
     public:
-        Menu(): _nb_joueur(0){
+        Menu(): _nb_joueur(1), _select(false),_nb_cpu(1){
             std::cerr<<"constr menu"<<std::endl;
         }
         ~Menu(){}
 
         void afficher();
         void afficherEntree();
-        void afficherFond(int x,int y);
+        void afficherLogo();
         void afficherNbjoueur();
         void afficherChiffre(int chiffre,int x,int y);
         void gestion_event(SDL_Event event,bool *continuer);
         void lancer_menu();
         int nb_joueur(){ return _nb_joueur;}
+        void setNbJoueur(int val){_nb_joueur = val;}
+        int nb_cpu(){ return _nb_cpu;}
+        void setNbCpu(int val){_nb_cpu = val;}
+        bool select(){return _select;}
+        void setSelect(bool val){ _select = val;}
+        void switch_menu();
+
 
 
     protected:
         SDL_Event _event;
         int _nb_joueur;
+        int _nb_cpu;
+        bool _select;
     private:
 };
 
